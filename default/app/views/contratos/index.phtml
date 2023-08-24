@@ -1,0 +1,34 @@
+<div class="card mb-3">
+
+	<div class="card-body">
+		<?= Form::open('index/crearContrato') ?>
+		<div class="row">
+			<?= View::partial('pollo/formularios/contratos/arrendamiento/arrendatario')?>
+		</div>
+
+		<div class="row">
+			<?= View::partial('pollo/formularios/contratos/arrendamiento/fiador')?>
+		</div>
+
+		<div class="row">
+			<?= View::partial('pollo/formularios/contratos/arrendamiento/propiedad')?>
+		</div>
+
+		<div class="row pt-4">
+			<div class="col-6 ">
+				<button type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
+			</div>
+
+			<div class="col-6 ">
+				<button type="button" class="btn btn-danger btn-lg btn-block" onclick="clearInputs()">Limpiar</button>
+			</div>
+		</div>
+
+		<?= Form::close() ?>
+	</div>
+
+</div>
+
+
+
+</div>

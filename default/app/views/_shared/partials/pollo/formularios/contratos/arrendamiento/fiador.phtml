@@ -1,0 +1,48 @@
+<div class="col-12 m-0">
+	<div class="input-group">
+		<h4 class="m-0 pt-4">Fiador</h4>
+	</div>
+	<div class=" alert alert-warning alert-dismissible fade show" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<strong>Los campos con * son obligatorios</strong>
+	</div>
+
+	<script>
+		$(".alert").alert();
+	</script>
+</div>
+
+
+<div class="col-6 m-0">
+	<label for="autoSizingInput" class="mb-0 ">Nombre y Apellidos</label>
+	<div class="input-group">
+		<div class="input-group-text">*</div>
+		<?= Form::text('fiador.Nombre', 'class="form-control"  required') ?>
+	</div>
+</div>
+
+<div class="col-6 m-0">
+	<label for="autoSizingInputGroup" class="mb-0 ">Direccion</label>
+	<div class="input-group">
+		<div class="input-group-text ">*</div>
+		<?= Form::text('fiador.Direccion', 'class="form-control"  required') ?>
+	</div>
+</div>
+
+<div class="col-6 m-0">
+	<label for="autoSizingInputGroup" class="mb-0 pt-3">Colonia</label>
+	<div class="input-group">
+		<div class="input-group-text">*</div>
+		<?= Form::text('fiador.Colonia', 'class="form-control"  required') ?>
+	</div>
+</div>
+
+<div class="col-6 m-0">
+	<label for="autoSizingInputGroup" class="mb-0 pt-3">Municipio</label>
+	<div class="input-group">
+		<div class="input-group-text">*</div>
+		<?= Form::text('fiador.Municipio', 'class="form-control"  required') ?>
+	</div>
+</div>

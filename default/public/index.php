@@ -92,11 +92,13 @@ define('PUBLIC_PATH', substr($_SERVER['SCRIPT_NAME'], 0, -9)); // - index.php st
  */
 $url = $_SERVER['PATH_INFO'] ?? '/';
 
+date_default_timezone_set('America/Mexico_City');
+
 /**
  * Obtiene la url usando $_GET['_url']
  * Cambiar también en el .htaccess.
  */
- //$url = $_GET['_url'] ?? '/';
+//$url = $_GET['_url'] ?? '/';
 
 /**
  * Carga el gestor de arranque
