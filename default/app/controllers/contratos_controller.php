@@ -10,7 +10,6 @@ class ContratosController extends AppController
 {
     public function index()
     {
-
     }
 
 
