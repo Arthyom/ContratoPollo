@@ -18,7 +18,7 @@ class RecibosController extends AppController
     {
 
         View::select(null);
-        View::template('json');
+        View::template(null);
 
         $recibo = new Recibo(Input::post('recibo'));
 

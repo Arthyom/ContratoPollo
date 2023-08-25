@@ -17,7 +17,7 @@ class ContratosController extends AppController
     {
 
         View::select(null);
-        View::template('json');
+        View::template(null);
 
 
         $paths = (new Contratos())->crearContrato(
