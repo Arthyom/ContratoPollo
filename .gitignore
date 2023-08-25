@@ -1,5 +1,6 @@
 vendor
-default/app/temp
+!default/app/temp/documentos
+default/app/temp/mpdf
 default/public/temp
 
 # Mac filesystem dust
