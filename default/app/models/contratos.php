@@ -40,7 +40,8 @@ class Contratos extends ActiveRecord
     public function crearContrato($arrendador, $arrendatario, $propiedad, $fiador)
     {
         $arrendador->begin();
-        if($arrendador->create() && $arrendador->create() && $arrendador->create()) {
+        $propiedad->PrecioTexto = strtoupper(( new NumberFormatter("es-MEX", NumberFormatter::SPELLOUT) )->format($propiedad->Precio));
+        if($arrendador->create() && $arrendatario->create() && $propiedad->create() && $fiador->create()) {
 
             $fileBasePath = APP_PATH.'temp/documentos/arrendamiento/';
             $fullNameSavedContract = "Contrato Arrendamiento $arrendatario->Nombre.docx";

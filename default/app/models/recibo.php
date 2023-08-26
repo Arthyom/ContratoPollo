@@ -4,7 +4,6 @@ require_once APP_PATH . '../../vendor/autoload.php';
 
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\Element\TextRun;
-use Gears\Pdf;
 
 class Recibo extends ActiveRecord
 {
@@ -22,6 +21,7 @@ class Recibo extends ActiveRecord
         $recibo->FechaHoraEmision = date('Y-m-d H:i:s', strtotime('-1 hour'));
         $recibo->Importe = $recibo->PrecioUnitario * 1;
         $recibo->Total = $recibo->PrecioUnitario * 1;
+        $recibo->PrecioTexto = strtoupper(( new NumberFormatter("es-MEX", NumberFormatter::SPELLOUT) )->format($recibo->Total));
         $recibo->IdentificadorUnico = uniqid() .' - '. $recibo->Concepto ;
 
         $recibo->begin();

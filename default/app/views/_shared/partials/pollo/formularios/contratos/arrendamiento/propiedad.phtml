@@ -17,20 +17,13 @@
 	<label for="autoSizingInput" class="mb-0 ">Precio por mes</label>
 	<div class="input-group">
 		<div class="input-group-text">*</div>
-		<?= Form::number('propiedad.Precio', 'class="form-control"   required') ?>
+		<?= Form::number('propiedad.Precio', 'class="form-control" placeholder="Numero sin decimales"   required') ?>
 	</div>
 </div>
 
-<div class="m-0 col-6">
-	<label for="autoSizingInputGroup" class="mb-0 ">Precio Texto</label>
-	<div class="input-group">
-		<div class="input-group-text">*</div>
-		<?= Form::text('propiedad.PrecioTexto', 'class="form-control"  required') ?>
-	</div>
-</div>
 
 <div class="m-0 col-6">
-	<label for="autoSizingInputGroup" class="mb-0 pt-3">Direccion</label>
+	<label for="autoSizingInputGroup" class="mb-0 ">Direccion</label>
 	<div class="input-group">
 		<div class="input-group-text">*</div>
 		<?= Form::text('propiedad.Direccion', 'class="form-control"  required') ?>
@@ -45,7 +38,7 @@
 	</div>
 </div>
 
-<div class="m-0 col-12">
+<div class="m-0 col-6">
 	<label for="autoSizingInputGroup" class="mb-0 pt-3">Municipio</label>
 	<div class="input-group">
 		<div class="input-group-text">*</div>

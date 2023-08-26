@@ -13,26 +13,21 @@
 		$(".alert").alert();
 	</script>
 </div>
-<div class="col-6 m-0">
+<div class="col-12 m-0">
 	<label for="autoSizingInput" class="mb-0 ">Concepto(s)</label>
 	<div class="input-group">
 		<div class="input-group-text">*</div>
-		<?= Form::text('recibo.Concepto', 'class="form-control"  required') ?>
-	</div>
-</div>
-
-<div class="col-6 m-0">
-	<label for="autoSizingInputGroup" class="mb-0 ">Precio Unitario</label>
-	<div class="input-group">
-		<div class="input-group-text">*</div>
-		<?= Form::text('recibo.PrecioUnitario', 'class="form-control"  required') ?>
+		<?= Form::text(
+		    'recibo.Concepto',
+		    'class="form-control" placeholder="Concepto: [Renta, Estacionamiento, etc.], [Dirección de pago], [Mes a pagar], [Año]"  required'
+		) ?>
 	</div>
 </div>
 
 <div class="col-12 m-0">
-	<label for="autoSizingInputGroup" class="mb-0 pt-3">Precio Texto</label>
+	<label for="autoSizingInputGroup" class="mb-0 pt-3">Precio Unitario</label>
 	<div class="input-group">
 		<div class="input-group-text">*</div>
-		<?= Form::text('recibo.PrecioTexto', 'class="form-control"  required') ?>
+		<?= Form::text('recibo.PrecioUnitario', 'class="form-control" placeholder="[Numero sin decimales]"  required') ?>
 	</div>
 </div>
