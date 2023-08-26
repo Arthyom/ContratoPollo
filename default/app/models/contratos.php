@@ -46,7 +46,7 @@ class Contratos extends ActiveRecord
             $fileBasePath = APP_PATH.'temp/documentos/arrendamiento/';
             $fullNameSavedContract = "Contrato Arrendamiento $arrendatario->Nombre.docx";
             $fullPathSavedContract = $fileBasePath. $fullNameSavedContract;
-            $templatePath = $fileBasePath.'arrendamiento.docx';
+            $templatePath = $fileBasePath.'ArrendamientoPlantilla.docx';
             $template = new TemplateProcessor($templatePath);
 
             $underLinedDic = [
