@@ -12,8 +12,7 @@
  * @package Controller
  * @author kumbiaPHP Team
  */
-require_once CORE_PATH . 'kumbia/kumbia_rest.php';
-abstract class RestController extends KumbiaRest
+abstract class PublicResourceController extends ScaffoldResourceController
 {
     /**
      * Inicialización de la petición
@@ -23,12 +22,10 @@ abstract class RestController extends KumbiaRest
      */
     protected function initialize()
     {
-
+        return true;
     }
 
     protected function finalize()
     {
-
     }
-
 }

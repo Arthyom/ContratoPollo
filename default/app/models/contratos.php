@@ -65,7 +65,7 @@ class Contratos extends ActiveRecord
                 '${Fiador.Colonia}' => $fiador->Colonia,
                 '${Fiador.Municipio}' => $fiador->Municipio,
 
-                '${Propiedad.Precio}' => $propiedad->Precio ,
+                '${Propiedad.Precio}' => ( new NumberFormatter("es-MEX", NumberFormatter::CURRENCY) )->format($propiedad->Precio) ,
                 '${Propiedad.PrecioTexto}' => $propiedad->PrecioTexto,
                 '${Propiedad.Direccion}' => $propiedad->Direccion,
                 '${Propiedad.Colonia}' => $propiedad->Colonia,

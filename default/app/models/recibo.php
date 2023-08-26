@@ -40,13 +40,13 @@ class Recibo extends ActiveRecord
                 '${Recibo.FechaHoraEmision}' => date('d/m/Y H:i:s', strtotime($recibo->FechaHoraEmision)),
                 '${Recibo.IdentificadorUnico}' => $recibo->IdentificadorUnico,
                 '${Recibo.Concepto}' => $recibo->Concepto,
-                '${Recibo.PrecioUnitario}' => $recibo->Importe,
-                '${Recibo.Importe}' => $recibo->Importe
+                '${Recibo.PrecioUnitario}' => ( new NumberFormatter("es-MEX", NumberFormatter::CURRENCY) )->format($recibo->PrecioUnitario),
+                '${Recibo.Importe}' => ( new NumberFormatter("es-MEX", NumberFormatter::CURRENCY) )->format($recibo->Importe)
             ];
 
             $boldAndUnderlinedDic = [
                 '${Recibo.Receptor.Nombre}' => $recibo->ReceptorNombre,
-                '${Recibo.Total}' => $recibo->Total,
+                '${Recibo.Total}' => ( new NumberFormatter("es-MEX", NumberFormatter::CURRENCY) )->format($recibo->Total),
                 '${Recibo.PrecioTexto}' => $recibo->PrecioTexto
             ];
 

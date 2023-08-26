@@ -2,7 +2,7 @@ vendor
 
 
 !default/app/temp/documentos/recibos/ReciboPlantilla.docx
-!default/app/temp/documentos/arrendamientos/ArrendamientoPlantilla.docx
+!default/app/temp/documentos/arrendamiento/ArrendamientoPlantilla.docx
 
 default/public/index.php
 
