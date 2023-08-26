@@ -1,37 +1,44 @@
-<div class="col-12 m-0 ">
-	<div class="input-group">
-		<h4 class="m-0 pt-0">Arrendatario</h4>
-	</div>
+<div class="card-header" id="arrendatario">
+	<h2 class="mb-0">
+		<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+			data-target="#collapseTwoArrendatario" aria-expanded="false" aria-controls="collapseTwoArrendatario">
+			<h4 class="m-0 pt-0">Arrendatario</h4>
+		</button>
+	</h2>
 </div>
+<div id="collapseTwoArrendatario" class="collapse" aria-labelledby="arrendatario" data-parent="#accordionExample">
+	<div class="card-body">
 
-<div class="col-6 m-0">
-	<label for="autoSizingInput" class="mb-0 ">Nombre y Apellidos</label>
-	<div class="input-group">
-		<div class="input-group-text">*</div>
-		<?= Form::text('arrendatario.Nombre', 'class="form-control"  maxlength="100" required') ?>
-	</div>
-</div>
+		<div class="col-auto m-0">
+			<label for="autoSizingInput" class="mb-0 ">Nombre y Apellidos</label>
+			<div class="input-group">
+				<div class="input-group-text">*</div>
+				<?= Form::text('arrendatario.Nombre', 'class="form-control"  maxlength="100" required') ?>
+			</div>
+		</div>
 
-<div class="col-6 m-0">
-	<label for="autoSizingInputGroup" class="mb-0 ">Direccion</label>
-	<div class="input-group">
-		<div class="input-group-text">*</div>
-		<?= Form::text('arrendatario.Direccion', 'class="form-control" maxlength="100" required') ?>
-	</div>
-</div>
+		<div class="col-auto m-0">
+			<label for="autoSizingInputGroup" class="mb-0 pt-3">Direccion</label>
+			<div class="input-group">
+				<div class="input-group-text">*</div>
+				<?= Form::text('arrendatario.Direccion', 'class="form-control" maxlength="100" required') ?>
+			</div>
+		</div>
 
-<div class="col-6 m-0">
-	<label for="autoSizingInputGroup" class="mb-0 pt-3 ">Colonia</label>
-	<div class="input-group">
-		<div class="input-group-text">*</div>
-		<?= Form::text('arrendatario.Colonia', 'class="form-control" maxlength="100" required') ?>
-	</div>
-</div>
+		<div class="col-auto m-0">
+			<label for="autoSizingInputGroup" class="mb-0 pt-3 ">Colonia</label>
+			<div class="input-group">
+				<div class="input-group-text">*</div>
+				<?= Form::text('arrendatario.Colonia', 'class="form-control" maxlength="100" required') ?>
+			</div>
+		</div>
 
-<div class="col-6 m-0">
-	<label for="autoSizingInputGroup" class="mb-0 pt-3">Municipio</label>
-	<div class="input-group">
-		<div class="input-group-text">*</div>
-		<?= Form::text('arrendatario.Municipio', 'class="form-control" maxlength="100" required') ?>
+		<div class="col-auto m-0">
+			<label for="autoSizingInputGroup" class="mb-0 pt-3">Municipio</label>
+			<div class="input-group">
+				<div class="input-group-text">*</div>
+				<?= Form::text('arrendatario.Municipio', 'class="form-control" maxlength="100" required') ?>
+			</div>
+		</div>
 	</div>
 </div>
