@@ -1,6 +1,11 @@
 <div class="card mb-3">
 
 	<div class="card-body">
+
+		<div class="row">
+			<?= View::partial('pollo/formularios/mensajes/obligatorio')?>
+		</div>
+
 		<?= Form::open('contratos/crearContrato') ?>
 		<div class="row">
 			<?= View::partial('pollo/formularios/contratos/arrendamiento/arrendatario')?>
