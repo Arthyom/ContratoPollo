@@ -19,7 +19,7 @@
 	<label for="autoSizingInput" class="mb-0 ">Nombre y Apellidos</label>
 	<div class="input-group">
 		<div class="input-group-text">*</div>
-		<?= Form::text('arrendatario.Nombre', 'class="form-control"  required') ?>
+		<?= Form::text('arrendatario.Nombre', 'class="form-control"  maxlength="100" required') ?>
 	</div>
 </div>
 
@@ -27,7 +27,7 @@
 	<label for="autoSizingInputGroup" class="mb-0 ">Direccion</label>
 	<div class="input-group">
 		<div class="input-group-text">*</div>
-		<?= Form::text('arrendatario.Direccion', 'class="form-control"  required') ?>
+		<?= Form::text('arrendatario.Direccion', 'class="form-control" maxlength="100" required') ?>
 	</div>
 </div>
 
@@ -35,7 +35,7 @@
 	<label for="autoSizingInputGroup" class="mb-0 pt-3 ">Colonia</label>
 	<div class="input-group">
 		<div class="input-group-text">*</div>
-		<?= Form::text('arrendatario.Colonia', 'class="form-control"  required') ?>
+		<?= Form::text('arrendatario.Colonia', 'class="form-control" maxlength="100" required') ?>
 	</div>
 </div>
 
@@ -43,6 +43,6 @@
 	<label for="autoSizingInputGroup" class="mb-0 pt-3">Municipio</label>
 	<div class="input-group">
 		<div class="input-group-text">*</div>
-		<?= Form::text('arrendatario.Municipio', 'class="form-control"  required') ?>
+		<?= Form::text('arrendatario.Municipio', 'class="form-control" maxlength="100" required') ?>
 	</div>
 </div>

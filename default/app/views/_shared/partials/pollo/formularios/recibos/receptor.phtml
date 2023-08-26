@@ -21,6 +21,8 @@
 	<label for="autoSizingInput">Nombre y Apellidos</label>
 	<div class="input-group">
 		<div class="input-group-text">*</div>
-		<?= Form::text('recibo.ReceptorNombre', 'class="form-control"  required') ?>
+		<?= Form::text('recibo.ReceptorNombre', 'class="form-control" 
+		maxlength="100"
+		required') ?>
 	</div>
 </div>

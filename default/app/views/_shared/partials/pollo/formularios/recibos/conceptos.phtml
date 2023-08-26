@@ -19,7 +19,9 @@
 		<div class="input-group-text">*</div>
 		<?= Form::text(
 		    'recibo.Concepto',
-		    'class="form-control" placeholder="Concepto: [Renta, Estacionamiento, etc.], [Dirección de pago], [Mes a pagar], [Año]"  required'
+		    'class="form-control" 
+			maxlength="100"
+			placeholder="Concepto: [Renta, Estacionamiento, etc.], [Dirección de pago], [Mes a pagar], [Año]"  required'
 		) ?>
 	</div>
 </div>
@@ -28,6 +30,8 @@
 	<label for="autoSizingInputGroup" class="mb-0 pt-3">Precio Unitario</label>
 	<div class="input-group">
 		<div class="input-group-text">*</div>
-		<?= Form::number('recibo.PrecioUnitario', 'class="form-control" placeholder="[Numero sin decimales]"  required') ?>
+		<?= Form::number('recibo.PrecioUnitario', 'class="form-control" 
+		maxlength="100"
+		placeholder="[Numero sin decimales]"  required') ?>
 	</div>
 </div>
