@@ -1,15 +1,15 @@
 vendor
+*.docx
 
-
-default/app/temp/documentos/recibos/ReciboPlantilla.docx
-default/app/temp/documentos/arrendamiento/ArrendamientoPlantilla.docx
+!default/app/temp/documentos/recibos/ReciboPlantillas.docx
+!default/app/temp/documentos/arrendamiento/ArrendamientoPlantilla.docx
 
 default/public/index.php
 
 # Mac filesystem dust
 .DS_Store
 
-*.docx
+
 
 # Vagrant
 .vagrant
