@@ -4,7 +4,6 @@ vendor
 !default/app/temp/documentos/recibos/ReciboPlantilla.docx
 !default/app/temp/documentos/arrendamientos/ArrendamientoPlantilla.docx
 
-default/app/temp/
 default/public/index.php
 
 # Mac filesystem dust
