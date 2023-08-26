@@ -1,34 +1,21 @@
-<div class="card">
-
-
+<div class="card mb-3">
 	<div class="card-body">
-
 		<?= View::partial('pollo/formularios/plantillas/titulo_controlador', null, ['titulo' => $controller_name])?>
-
-
 		<div class="row">
 			<?= View::partial('pollo/formularios/mensajes/obligatorio')?>
 		</div>
 
 		<?= Form::open('recibos/crearRecibo') ?>
-		<div class="row">
-			<?= View::partial('pollo/formularios/recibos/receptor')?>
-		</div>
 
-		<div class="row">
-			<?= View::partial('pollo/formularios/recibos/conceptos')?>
-		</div>
+		<div class="accordion" id="accordionExample">
+			<div class="card">
+				<?= View::partial('pollo/formularios/recibos/receptor')?>
 
-		<div class="row pt-4">
-			<div class="col-6 ">
-				<button type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
-			</div>
-
-			<div class="col-6 ">
-				<button type="button" class="btn btn-danger btn-lg btn-block" onclick="clearInputs()">Limpiar</button>
+				<?= View::partial('pollo/formularios/recibos/conceptos')?>
 			</div>
 		</div>
+
+		<?= View::partial('pollo/formularios/plantillas/botones_form')?>
 		<?= Form::close() ?>
 	</div>
-
 </div>

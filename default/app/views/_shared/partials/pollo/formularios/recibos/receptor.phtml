@@ -1,15 +1,26 @@
-<div class="col-12 m-0">
-	<div class="input-group">
-		<h4 class="m-0 pt-0">Receptor</h4>
-	</div>
+<div class="card-header" id="receptor">
+	<h2 class="mb-0">
+		<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+			data-target="#collapseTwoReceptor" aria-expanded="false" aria-controls="collapseTwoReceptor">
+			<h4 class="m-0 pt-0">Receptor</h4>
+		</button>
+	</h2>
 </div>
+<div id="collapseTwoReceptor" class="collapse" aria-labelledby="receptor" data-parent="#accordionExample">
+	<div class="card-body">
 
-<div class="col-12 m-0">
-	<label for="autoSizingInput">Nombre y Apellidos</label>
-	<div class="input-group">
-		<div class="input-group-text">*</div>
-		<?= Form::text('recibo.ReceptorNombre', 'class="form-control" 
+
+		<div class="col-auto m-0">
+			<label for="autoSizingInput">Nombre y Apellidos</label>
+			<div class="input-group">
+				<div class="input-group-text">*</div>
+				<?= Form::text('recibo.ReceptorNombre', 'class="form-control" 
 		maxlength="100"
 		required') ?>
+			</div>
+		</div>
+
+
+
 	</div>
 </div>
