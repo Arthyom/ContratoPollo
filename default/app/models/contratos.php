@@ -4,7 +4,6 @@ require_once APP_PATH . '../../vendor/autoload.php';
 
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\Element\TextRun;
-use Gears\Pdf;
 
 class Contratos extends ActiveRecord
 {
@@ -29,7 +28,7 @@ class Contratos extends ActiveRecord
             case 'Agusto': return 'Agosto';
             case 'Agusto': return 'Agosto';
 
-            case 'January': return 'Enero';
+            case 'September': return 'Septiembre';
             case 'August': return 'Agosto';
             case 'Agusto': return 'Agosto';
             case 'Agusto': return 'Agosto';
