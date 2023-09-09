@@ -10,8 +10,8 @@ class DeploymentController extends PublicResourceController
             $idDeployed  = $deploy->runMergeDeployment($this->param());
             $idDbUpdated = $deploy->runDbUpdating();
 
-            if($idDeployed && $idDbUpdated) {
-                $this->data = $idDbUpdated;
+            if($idDeployed && true) {
+                return $this->data = 'ok';
             }
         } catch (\Throwable $th) {
             $this->error($th);
