@@ -19,20 +19,18 @@ class Contratos extends ActiveRecord
     {
         switch ($englishMont) {
             case 'January': return 'Enero';
-            case 'Agusto': return 'Agosto';
-            case 'Agusto': return 'Agosto';
-            case 'Agusto': return 'Agosto';
+            case 'March': return 'Febrero';
+            case 'April': return 'Marzo';
+            case 'May': return 'Abril';
 
-            case 'January': return 'Enero';
-            case 'Agusto': return 'Agosto';
-            case 'Agusto': return 'Agosto';
-            case 'Agusto': return 'Agosto';
-
-            case 'September': return 'Septiembre';
+            case 'June': return 'Mayo';
+            case 'July': return 'Junio';
             case 'August': return 'Agosto';
-            case 'Agusto': return 'Agosto';
-            case 'Agusto': return 'Agosto';
+            case 'Septiembre': return 'Septiembre';
 
+            case 'Octuber': return 'Octubre';
+            case 'November': return 'Noviembre';
+            case 'December': return 'Diciembre';
         }
     }
 

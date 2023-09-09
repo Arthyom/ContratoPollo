@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 26-08-2023 a las 04:15:00
+-- Tiempo de generación: 02-09-2023 a las 20:06:01
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.4.33
 
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `arrendatarios` (
   `Colonia` varchar(100) NOT NULL,
   `Municipio` varchar(100) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `fiadores` (
   `Colonia` varchar(100) NOT NULL,
   `Municipio` varchar(100) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -113,9 +113,9 @@ CREATE TABLE IF NOT EXISTS `propiedades` (
   `Colonia` varchar(100) NOT NULL,
   `Municipio` varchar(100) NOT NULL,
   `Precio` decimal(10,0) NOT NULL,
-  `PrecioTexto` varchar(100) NOT NULL,
+  `PrecioTexto` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -133,9 +133,9 @@ CREATE TABLE IF NOT EXISTS `recibos` (
   `PrecioUnitario` decimal(10,0) NOT NULL,
   `Importe` decimal(10,0) NOT NULL,
   `Total` decimal(10,0) NOT NULL,
-  `PrecioTexto` varchar(100) NOT NULL,
+  `PrecioTexto` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,13 +1,20 @@
-<div id="scaffold">
-<?php View::content() ?>
-<h1><?= ucwords("$model"), ": <span>$action_name</span>" ?></h1>
+<div class="card mb-3">
+	<div class="card-body">
 
-<div class="col-8 offset-2">
-<?php ModelForm::create($$model)?>
-</div>
 
-<div class="col-12">
-	<a href="../" class="btn btn-default">Listado</a>
-</div>
-<?php //View::partial('editors/tinymce') // ya veremos si incluimos algun wysiwyg?>
+		<h2>
+			<?= ucwords("$model"), " <span class = 'text-primary'>".  ucfirst($action_name) ."</span>" ?>
+		</h2>
+
+		<div class="row pt-3">
+			<?= View::partial('pollo/formularios/mensajes/obligatorio')?>
+		</div>
+
+		<div class="col-12 p-0">
+			<?php ModelForm::create($$model)?>
+		</div>
+
+
+		<?php //View::partial('editors/tinymce') // ya veremos si incluimos algun wysiwyg?>
+	</div>
 </div>

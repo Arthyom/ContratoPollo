@@ -3,6 +3,8 @@
  * KumbiaPHP Web Framework
  * Parámetros de configuracion de la aplicacion
  */
+const DB_STATE = ['reWrite'=>true];
+
 return [
     'application' => [
         /**
