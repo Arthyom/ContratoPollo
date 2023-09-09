@@ -11,16 +11,16 @@ abstract class ScaffoldController extends AdminController
     /** @var string Carpeta en views/_shared/scaffolds/ */
     public string $scaffold = 'kumbia';
     /** @var string Nombre del modelo en CamelCase */
-    public string $model = '';
+    public $model = '';
 
     /**
      * Resultados paginados
-     * 
+     *
      * @param int $page  Página a mostrar
      */
     public function index($page = 1)
     {
-        $this->data = (new $this->model)->paginate("page: $page", 'order: id desc');
+        $this->data = (new $this->model())->paginate("page: $page", 'order: id desc');
     }
 
     /**
@@ -30,7 +30,7 @@ abstract class ScaffoldController extends AdminController
     {
         if (Input::hasPost($this->model)) {
 
-            $obj = new $this->model;
+            $obj = new $this->model();
             //En caso que falle la operación de guardar
             if (!$obj->save(Input::post($this->model))) {
                 Flash::error('Falló Operación');
@@ -42,12 +42,12 @@ abstract class ScaffoldController extends AdminController
             return;
         }
         // Sólo es necesario para el autoForm
-        $this->{$this->model} = new $this->model;
+        $this->{$this->model} = new $this->model();
     }
 
     /**
      * Edita un Registro
-     * 
+     *
      * @param int $id  Idendificador del registro
      */
     public function editar($id)
@@ -56,7 +56,7 @@ abstract class ScaffoldController extends AdminController
 
         //se verifica si se ha enviado via POST los datos
         if (Input::hasPost($this->model)) {
-            $obj = new $this->model;
+            $obj = new $this->model();
             if (!$obj->update(Input::post($this->model))) {
                 Flash::error('Falló Operación');
                 //se hacen persistente los datos en el formulario
@@ -68,17 +68,17 @@ abstract class ScaffoldController extends AdminController
         }
 
         //Aplicando la autocarga de objeto, para comenzar la edición
-        $this->{$this->model} = (new $this->model)->find((int) $id);
+        $this->{$this->model} = (new $this->model())->find((int) $id);
     }
 
     /**
      * Borra un Registro
-     * 
+     *
      * @param int $id Identificador de registro
      */
     public function borrar($id)
     {
-        if (!(new $this->model)->delete((int) $id)) {
+        if (!(new $this->model())->delete((int) $id)) {
             Flash::error('Falló Operación');
         }
         //enrutando al index para listar los articulos
@@ -87,11 +87,11 @@ abstract class ScaffoldController extends AdminController
 
     /**
      * Ver un Registro
-     * 
+     *
      * @param int $id Identificador de registro
      */
     public function ver($id)
     {
-        $this->data = (new $this->model)->find_first((int) $id);
+        $this->data = (new $this->model())->find_first((int) $id);
     }
 }
