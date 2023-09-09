@@ -131,7 +131,7 @@ class ModelForm
         echo '</div>';
 
         echo '<div class="col-6">';
-        echo '<input type="submit" value="Enviar" class=" btn btn-block btn-primary" />';
+        echo '<input type="submit" value="Guardar" class=" btn btn-block btn-primary" />';
         echo '</div>';
         echo '</div>';
 
