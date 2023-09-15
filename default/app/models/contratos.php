@@ -4,6 +4,8 @@ require_once APP_PATH . '../../vendor/autoload.php';
 
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\Element\TextRun;
+use PhpOffice\PhpWord\IOFactory;
+use PhpOffice\PhpWord\Settings;
 
 class Contratos extends ActiveRecord
 {
@@ -44,6 +46,8 @@ class Contratos extends ActiveRecord
             $fullNameSavedContract = "Contrato Arrendamiento $arrendatario->Nombre.docx";
             $fullPathSavedContract = $fileBasePath. $fullNameSavedContract;
             $templatePath = $fileBasePath.'ArrendamientoPlantilla.docx';
+            $pdfFullPathSavedContract = "$fileBasePath/$fullNameSavedContract.pdf";
+            $pdfFullNameSavedContract = "Contrato Arrendamiento $arrendatario->Nombre.pdf";
             $template = new TemplateProcessor($templatePath);
 
             $underLinedDic = [
@@ -98,14 +102,24 @@ class Contratos extends ActiveRecord
 
 
             $template->saveAs($fullPathSavedContract);
-            // Pdf::convert($fileBaseName.'save.docx', $fileBaseName.'save.pdf');
+
+            try {
+                Settings::setPdfRendererName(Settings::PDF_RENDERER_DOMPDF);
+                Settings::setPdfRendererPath('.');
+                $phpWord = IOFactory::load($fullPathSavedContract, 'Word2007');
+                $phpWord->save($pdfFullPathSavedContract, 'PDF');
+                $fullNameSavedContract = $pdfFullNameSavedContract;
+                $fullPathSavedContract = $pdfFullPathSavedContract;
+            } catch (\Throwable $th) {
+                ;
+            }
+
             $arrendador->commit();
 
             return [
                 'fullPathSavedContract' => $fullPathSavedContract,
                 'fullNameSavedContract' => $fullNameSavedContract
             ];
-
         }
 
         return null;

@@ -43,6 +43,7 @@ class ContratosController extends AppController
             }
         } catch (\Throwable $th) {
             //throw $th;
+            echo var_dump($th);
         }
     }
 }
