@@ -28,7 +28,7 @@ class Contratos extends ActiveRecord
             case 'June': return 'Mayo';
             case 'July': return 'Junio';
             case 'August': return 'Agosto';
-            case 'Septiembre': return 'Septiembre';
+            case 'September': return 'Septiembre';
 
             case 'Octuber': return 'Octubre';
             case 'November': return 'Noviembre';
