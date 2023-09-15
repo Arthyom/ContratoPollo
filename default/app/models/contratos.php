@@ -111,7 +111,7 @@ class Contratos extends ActiveRecord
                 $fullNameSavedContract = $pdfFullNameSavedContract;
                 $fullPathSavedContract = $pdfFullPathSavedContract;
             } catch (\Throwable $th) {
-                ;
+                throw new Exception($th);
             }
 
             $arrendador->commit();
