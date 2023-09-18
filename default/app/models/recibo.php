@@ -4,6 +4,8 @@ require_once APP_PATH . '../../vendor/autoload.php';
 
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\Element\TextRun;
+use PhpOffice\PhpWord\IOFactory;
+use PhpOffice\PhpWord\Settings;
 
 class Recibo extends ActiveRecord
 {
@@ -24,6 +26,7 @@ class Recibo extends ActiveRecord
         $recibo->PrecioTexto = strtoupper(( new NumberFormatter("es-MEX", NumberFormatter::SPELLOUT) )->format($recibo->Total));
         $recibo->IdentificadorUnico = uniqid() .' - '. $recibo->Concepto ;
 
+
         $recibo->begin();
         if($recibo->create()) {
 
@@ -32,7 +35,8 @@ class Recibo extends ActiveRecord
             $fullPathSavedContract = $fileBasePath. $fullNameSavedContract;
             $templatePath = $fileBasePath.'ReciboPlantilla.docx';
             $template = new TemplateProcessor($templatePath);
-
+            $pdfFullPathSavedContract = "$fileBasePath/$fullNameSavedContract.pdf";
+            $pdfFullNameSavedContract = "Recibo $recibo->IdentificadorUnico $recibo->ReceptorNombre .pdf";
 
 
 
@@ -69,6 +73,18 @@ class Recibo extends ActiveRecord
 
 
             $template->saveAs($fullPathSavedContract);
+
+            try {
+                Settings::setPdfRendererName(Settings::PDF_RENDERER_DOMPDF);
+                Settings::setPdfRendererPath('.');
+                $phpWord = IOFactory::load($fullPathSavedContract, 'Word2007');
+                $phpWord->save($pdfFullPathSavedContract, 'PDF');
+                $fullNameSavedContract = $pdfFullNameSavedContract;
+                $fullPathSavedContract = $pdfFullPathSavedContract;
+            } catch (\Throwable $th) {
+                throw new Exception($th);
+            }
+
             // Pdf::convert($fileBaseName.'save.docx', $fileBaseName.'save.pdf');
             $recibo->commit();
 
