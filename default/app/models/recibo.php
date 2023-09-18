@@ -77,7 +77,7 @@ class Recibo extends ActiveRecord
             try {
                 Settings::setPdfRendererName(Settings::PDF_RENDERER_DOMPDF);
                 Settings::setPdfRendererPath('.');
-                $phpWord = IOFactory::load($fullPathSavedContract, 'Word2007');
+                $phpWord = IOFactory::load($fullPathSavedContract, 'Word2007.');
                 $phpWord->save($pdfFullPathSavedContract, 'PDF');
                 $fullNameSavedContract = $pdfFullNameSavedContract;
                 $fullPathSavedContract = $pdfFullPathSavedContract;
