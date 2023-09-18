@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * PagesControllerTest class
  */
-class IndexControllerTest extends TestCase
+class PropiedadesControllerTest extends TestCase
 {
     use KumbiaTestTrait;
 
@@ -28,17 +28,9 @@ class IndexControllerTest extends TestCase
      *
      * @return void
      */
-    public function testDisplayIndexOk()
+    public function testPropiedadesIndexOk()
     {
-        $buttonContrato = 'generar contrato';
-        $buttonRecibo = 'generar recibo';
-        $actual = $this->get('index');
-        $this->assertStringContainsString('Bienvenido', $actual);
-        $this->assertStringContainsString($buttonContrato, strtolower($actual));
-        $this->assertStringContainsString($buttonRecibo, strtolower($actual));
-
-
-        $test = $this->get('index');
+        $actual = $this->get('propiedades');
         $this->assertResponseCode(200);
     }
     /**

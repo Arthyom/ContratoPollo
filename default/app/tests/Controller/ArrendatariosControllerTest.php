@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * PagesControllerTest class
  */
-class PagesControllerTest extends TestCase
+class ArrendatariosControllerTest extends TestCase
 {
     use KumbiaTestTrait;
 
@@ -28,12 +28,10 @@ class PagesControllerTest extends TestCase
      *
      * @return void
      */
-    public function testDisplayPage()
+    public function testArrendatariosIndexOk()
     {
-        // $actual = $this->get('/pages/kumbia/status');
-        //$this->assertStringContainsString('<h2>config.', $actual);
-        //$test = $this->get('/pages/show/kumbia/status/');
-        ///$this->assertResponseCode(200);
+        $actual = $this->get('arrendatarios');
+        $this->assertResponseCode(200);
     }
     /**
      * expectedException KumbiaException
