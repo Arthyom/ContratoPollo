@@ -40,6 +40,7 @@ class Deployment
 
             $command = "composer   install --working-dir  "  .dirname(__DIR__, 3) . " 2>&1";
             $response = shell_exec($command);
+
             foreach ($okInstallMessages as $key => $value) {
                 if((strpos($response, $value) > 0)) {
                     return true;

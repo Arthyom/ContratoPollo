@@ -14,7 +14,8 @@
         "czukowski/phpunit-mock-db": "^9.0",
         "dompdf/dompdf": "^2.0",
         "mpdf/mpdf": "^8.1",
-        "phpoffice/phpword": "^1.1"
+        "phpoffice/phpword": "^1.1",
+        "symfony/http-client": "^6.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^9",
