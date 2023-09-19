@@ -35,6 +35,9 @@ class Deployment
 
         if($this->isFromAllowedOrign($data)) {
             putenv('COMPOSER_HOME=~/.config/composer');
+            $command = "composer   update --working-dir  "  .dirname(__DIR__, 3) . " 2>&1";
+            $response = shell_exec($command);
+
             $command = "composer   install --working-dir  "  .dirname(__DIR__, 3) . " 2>&1";
             $response = shell_exec($command);
             foreach ($okInstallMessages as $key => $value) {
