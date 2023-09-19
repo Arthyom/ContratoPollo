@@ -29,7 +29,8 @@ class Deployment
     public function runComposerInstall($data)
     {
         $okInstallMessages = [
-            'Nothing to install, update or remove'
+            'Nothing to install, update or remove',
+            'installs'
         ];
 
         if($this->isFromAllowedOrign($data)) {
