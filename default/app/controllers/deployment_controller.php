@@ -7,12 +7,14 @@ class DeploymentController extends PublicResourceController
         try {
             //code...
             $deploy = new Deployment();
-            $idDeployed  = $deploy->runMergeDeployment($this->param());
-            $idDbUpdated = $deploy->runDbUpdating();
+            $isDeployed  = $deploy->runMergeDeployment($this->param());
+            $isDbUpdated = $deploy->runDbUpdating();
+            $arePackagesInstalled = $deploy->runComposerInstall($this->param());
 
-            if($idDeployed && true) {
+            if($isDeployed && $arePackagesInstalled) {
                 return $this->data = 'ok';
             }
+
         } catch (\Throwable $th) {
             $this->error($th);
         }

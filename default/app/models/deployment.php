@@ -4,6 +4,8 @@ require_once APP_PATH . 'config/config.php';
 
 class Deployment
 {
+    public $allowedOrigin = 682724886;
+
     public function runMergeDeployment($data)
     {
         $errorMessages = [
@@ -22,6 +24,25 @@ class Deployment
             return strpos($response, 'FETCH_HEAD');
         }
         return false;
+    }
+
+    public function runComposerInstall($data)
+    {
+        $okInstallMessages = [
+            'Nothing to install, update or remove'
+        ];
+
+        if($this->isFromAllowedOrign($data)) {
+            putenv('COMPOSER_HOME=~/.config/composer');
+            $command = "composer   install --working-dir  "  .dirname(__DIR__, 3) . " 2>&1";
+            $response = shell_exec($command);
+            foreach ($okInstallMessages as $key => $value) {
+                if((strpos($response, $value) > 0)) {
+                    return true;
+                }
+            }
+        }
+        throw new Exception("Error al realizar el deployment: $response", 1);
     }
 
     public function runDbUpdating()
@@ -51,5 +72,11 @@ class Deployment
             echo var_dump($th);
         }
 
+    }
+
+    private function isFromAllowedOrign($data)
+    {
+        $repositoryResponse = $data['repository']['id'];
+        return $repositoryResponse == $this->allowedOrigin;
     }
 }
