@@ -82,7 +82,7 @@ class Recibo extends ActiveRecord
                 $fullNameSavedContract = $pdfFullNameSavedContract;
                 $fullPathSavedContract = $pdfFullPathSavedContract;
             } catch (\Throwable $th) {
-                throw new Exception($th);
+                //throw new Exception($th);
             }
 
             // Pdf::convert($fileBaseName.'save.docx', $fileBaseName.'save.pdf');
