@@ -4,7 +4,6 @@ vendor
 !default/app/temp/documentos/recibos/ReciboPlantillas.docx
 !default/app/temp/documentos/arrendamiento/ArrendamientoPlantilla.docx
 
-default/public/index.php
 
 # Mac filesystem dust
 .DS_Store
