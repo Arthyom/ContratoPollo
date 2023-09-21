@@ -18,12 +18,10 @@ class Deployment
         if ($repositoryResponse == 682724886) {
             $pull = "/usr/bin/git pull https://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@github.com/arthyom/ContratoPollo.git  master 2>&1";
             $response = shell_exec($pull);
-            if(strpos($response, $errorMessages['existingChanges'])) {
-                throw new Exception("Error al realizar el deployment: $response", 1);
-            }
-            return strpos($response, 'FETCH_HEAD');
+            if(strpos($response, 'FETCH_HEAD') !== false) 
+                return true;            
         }
-        return false;
+        throw new Exception("Error origen no valido: $repositoryResponse", 1);
     }
 
     public function runComposerInstall($data)
