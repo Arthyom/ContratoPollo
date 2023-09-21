@@ -79,8 +79,8 @@ define('CORE_PATH', dirname(dirname(APP_PATH)).'/core/');
  *
  *  EN PRODUCCION ESTA CONSTANTE DEBERÍA SER ESTABLECIDA MANUALMENTE
  */
- $environment = strpos($_SERVER['HTTP_HOST'], 'www.documentos.') === 0 ? 'PRODUCTION' : $environment;
- $environment = strpos($_SERVER['HTTP_HOST'], 'www.qa.documentos.') === 0 && $environment != 'LOCAL' ? 'QA' : $environment;
+ $environment = strpos($_SERVER['HTTP_HOST'], 'www.documentos.') !== false ? 'PRODUCTION' : $environment;
+ $environment = strpos($_SERVER['HTTP_HOST'], 'www.qa.documentos.') !== false && $environment != 'LOCAL' ? 'QA' : $environment;
 
 switch ($environment) {
     case 'LOCAL':
