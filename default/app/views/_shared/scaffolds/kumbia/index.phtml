@@ -18,9 +18,10 @@
 		<div class="row">
 			<div class="col-12">
 				<table
-					class="table w-100 d-block d-md-table  table-striped table-inverse table-responsive table-bordered table-hover">
+					class="table w-100 d-block d-md-table text-center table-striped table-inverse table-responsive table-bordered table-hover">
 					<thead class="thead-dark">
 						<tr>
+							<th></th>
 							<?php foreach (current($data->items)->fields as $field) : ?>
 							<?php if($field !== 'PrecioTexto' && $field !== 'Id'): ?>
 							<th>
@@ -36,8 +37,9 @@
 
 					</thead>
 					<tbody>
-						<?php foreach ($data->items as $item) : ?>
+						<?php foreach ($data->items as $i=>$item) : ?>
 						<tr>
+							<td><?= h($i+1) ?></td>
 							<?php foreach ($item->fields as $field) : ?>
 							<?php if($field !== 'PrecioTexto' && $field !== 'Id'): ?>
 							<td scope="row">
@@ -52,20 +54,17 @@
 							<td scope="row">
 								<div class="row m-1">
 
-									<div class="col-6 p-0">
-										<a name="" id="" class="btn btn-primary btn-block"
-											href="<?=  $controller_name . '/editar' . '/'. $item->Id ?>"
-											role="button">
-											<i class="fa fa-edit"></i>
-										</a>
+									<div class="col-xs-12 col-md-5  p-0 m-1" >
+										<?= Html::linkAction("editar/$item->Id", '<i class="fa fa-edit"></i>', ' class="btn btn-primary btn-block" ') ?>
 									</div>
 
-									<div class="col-6 p-0">
-										<a name="" id="" class="btn btn-danger btn-block"
-											href="<?= $controller_name . '/borrar'. '/' . $item->Id ?>"
-											role="button" onclick="return confirm('¿Está seguro?')">
-											<i class="fa fa-trash"></i>
-										</a>
+								
+
+									<div class="col-xs-12 col-md-5 p-0 m-1">
+										
+										<?= Html::linkAction("borrar/$item->Id", '<i class="fa fa-trash"></i>',  
+										'onclick="return confirm(\'Estas seguro?\')" class="btn btn-danger btn-block" ') ?>
+
 									</div>
 
 								</div>
