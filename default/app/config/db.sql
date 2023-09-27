@@ -41,13 +41,6 @@ CREATE TABLE IF NOT EXISTS `arrendadores` (
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `arrendadores`
---
-
-INSERT INTO `arrendadores` (`Id`, `Nombre`, `Direccion`, `Colonia`, `Usuario`, `Pass`, `Municipio`) VALUES
-(1, 'Artemio Gonzalez Lemus', 'Av. Benito Juárez #27', 'Centro', 'Artemio', '1234', 'Moroleón');
-
 -- --------------------------------------------------------
 
 --
