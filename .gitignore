@@ -5,6 +5,7 @@ vendor
 !default/app/temp/documentos/recibos/ReciboPlantillas.docx
 !default/app/temp/documentos/arrendamiento/ArrendamientoPlantilla.docx
 
+default/app/config/dbUpdating
 
 # Mac filesystem dust
 .DS_Store

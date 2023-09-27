@@ -18,8 +18,9 @@ class Deployment
         if ($repositoryResponse == 682724886) {
             $pull = "/usr/bin/git pull https://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@github.com/arthyom/ContratoPollo.git  master 2>&1";
             $response = shell_exec($pull);
-            if(strpos($response, 'FETCH_HEAD') !== false) 
-                return true;            
+            if(strpos($response, 'FETCH_HEAD') !== false) {
+                return true;
+            }
         }
         throw new Exception("Error origen no valido: $repositoryResponse", 1);
     }
@@ -50,36 +51,41 @@ class Deployment
 
     public function runDbUpdating()
     {
-        try {
-            if(DB_STATE['reWrite']) {
-                //$dbScriptPath = APP_PATH.'config/db.sql';
+        if(DB_STATE['reWrite']) {
 
-                // $file = fopen( $dbScriptPath, "r" );
-                // $filesize = filesize( $dbScriptPath );
-                // $filetext = fread( $file, $filesize );
-                // fclose( $file );
+            $sqlToUpdatePath = APP_PATH.'config/db.sql';
+            $sqlToStorePath = APP_PATH."config/dbUpdating/dbBackUp_". date('Y_M_d_h_i_s_A') .".sql";
+            $extras = "--no-create-info --compact ";
 
+            $sqlToUpdate = $this->getSQLFileContent($sqlToUpdatePath);
 
-                // $dbScriptPath = realpath($dbScriptPath);
-                //  $command = "mysql  --user=frodo  --password=2010_F?! < ".$dbScriptPath;
-                // $command2 = "source  $dbScriptPath";
+            ///backup db data
+            shell_exec("mysqldump $extras --user=frodo  --password=2010_F?! --host=localhost contratos > $sqlToStorePath");
 
-                // $s = new Contratos();
-                // echo(var_dump(exec($command .'/shellexec.sql')));
-                // return;
-            }
+            ///run db updating
+            $connection = mysqli_connect("localhost", "frodo", "2010_F?!", "contratos");
+            mysqli_multi_query($connection, $sqlToUpdate);
+            while($connection->next_result());
+            ///restor db data
+            $sqlToStore = $this->getSQLFileContent($sqlToStorePath);
+            mysqli_multi_query($connection, $sqlToStore);
+            mysqli_close($connection);
 
             return true;
-        } catch (\Throwable $th) {
-            //throw $th;
-            echo var_dump($th);
         }
-
+        return true;
     }
 
     private function isFromAllowedOrign($data)
     {
         $repositoryResponse = $data['repository']['id'];
         return $repositoryResponse == $this->allowedOrigin;
+    }
+
+    private function getSQLFileContent($dbFilePath)
+    {
+        $file = fopen($dbFilePath, "r");
+        $fileSize = filesize($dbFilePath);
+        return fread($file, $fileSize);
     }
 }
