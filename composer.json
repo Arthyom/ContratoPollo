@@ -11,6 +11,7 @@
     "name": "kumbia/framework",
     "require": {
         "php": ">=7.4",
+        "amphp/parallel-functions": "^1.1",
         "dompdf/dompdf": "^2.0",
         "mpdf/mpdf": "^8.2",
         "phpoffice/phpword": "^1.1"
