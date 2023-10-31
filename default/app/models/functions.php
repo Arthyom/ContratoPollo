@@ -1,7 +1,8 @@
 <?php
+
 define('APP_PATH', dirname(__DIR__).'/');
 require_once APP_PATH . 'config/config.php';
-class Functions 
+class Functions
 {
     public function runComposerInstall()
     {
@@ -19,7 +20,25 @@ class Functions
         $response = shell_exec($command);
 
         foreach ($okInstallMessages as $key => $value) {
-           if((strpos($response, $value) > 0)) {
+            if((strpos($response, $value) > 0)) {
+                return true;
+            }
+        }
+    }
+
+    public function runMergeDeploy()
+    {
+
+        $okInstallMessages = [
+            'Nothing to install, update or remove',
+            'installs'
+        ];
+
+        $command = "cp -R /var/www/html/alfredowflsyo.com.co.documentos.qa/* /var/www/html/alfredowflsyo.com.co.documentos.prod/";
+        $response = shell_exec($command);
+
+        foreach ($okInstallMessages as $key => $value) {
+            if((strpos($response, $value) > 0)) {
                 return true;
             }
         }
@@ -60,3 +79,4 @@ $func = new Functions();
 
 $func->runDbUpdating();
 $func->runComposerInstall();
+$func->runMergeDeploy();
