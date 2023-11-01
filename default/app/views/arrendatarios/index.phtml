@@ -16,9 +16,9 @@
 
 		<?php if (isset($data->items) && (count($data->items) > 0)) : ?>
 		<div class="row">
-			<div class="col-12">
+			<div class="col-12 ">
 				<table
-					class="table w-100 d-block d-md-table text-center table-striped table-inverse table-responsive table-bordered table-hover">
+					class="table w-100 d-block d-md-table text-center align-middle table-striped table-inverse table-responsive table-bordered table-hover">
 					<thead class="thead-dark">
 						<tr>
 							<th></th>
@@ -45,10 +45,15 @@
 					<tbody>
 						<?php foreach ($data->items as $i => $item) : ?>
 						<tr>
-							<td><?= h($i + 1) ?></td>
+
+							<td scope="row" class="align-middle">
+								<?= h($i + 1) ?>
+							</td>
 							<?php foreach ($item->fields as $field) : ?>
+
 							<?php if($field !== 'PrecioTexto' && $field !== 'Id'): ?>
-							<td scope="row">
+							<td scope="row" class="align-middle">
+
 								<?php if($field == 'Precio'): ?>
 								<?= h(( new NumberFormatter("es-MEX", NumberFormatter::CURRENCY) )->format($item->$field))?>
 
@@ -63,24 +68,25 @@
 							</td>
 							<?php endif ?>
 							<?php endforeach?>
-							<td>
+							<td scope="row" class="align-middle">
+
 								<?php $len = sizeof($item->recibo) ?>
 								<?php if($len > 0) :  ?>
 								<?php $reciboFecha = (new DateTime($item->recibo[$len - 1]->FechaHoraEmision))->format('m') ?>
 								<?php $fechaActual = (new DateTime())->format('m')  ?>
 
 								<?php  if($reciboFecha === $fechaActual): ?>
-								<span class="badge badge-success">
+								<span class="badge badge-success text-center">
 									<?= h('Pagado')?>
 								</span>
 
 								<?php elseif($fechaActual > $reciboFecha) : ?>
-								<span class="badge badge-warning">
+								<span class="badge badge-warning text-center">
 									<?= h('Por Pagar')?>
 								</span>
 								<?php endif ?>
 								<?php else: ?>
-								<span class="badge badge-secondary">
+								<span class="badge badge-secondary text-center">
 									<?= h('Sin Recibos')?>
 								</span>
 								<?php endif ?>
