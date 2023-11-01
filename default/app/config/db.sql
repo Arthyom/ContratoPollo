@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 02-09-2023 a las 20:06:01
+-- Tiempo de generación: 01-11-2023 a las 08:40:13
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.4.33
 
@@ -30,16 +30,15 @@ USE `contratos`;
 --
 
 DROP TABLE IF EXISTS `arrendadores`;
-CREATE TABLE IF NOT EXISTS `arrendadores` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `arrendadores` (
+  `Id` int(11) NOT NULL,
   `Nombre` varchar(100) NOT NULL,
   `Direccion` varchar(100) NOT NULL,
   `Colonia` varchar(100) NOT NULL,
   `Usuario` varchar(100) NOT NULL,
   `Pass` varchar(100) NOT NULL,
-  `Municipio` varchar(100) NOT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `Municipio` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -48,14 +47,14 @@ CREATE TABLE IF NOT EXISTS `arrendadores` (
 --
 
 DROP TABLE IF EXISTS `arrendatarios`;
-CREATE TABLE IF NOT EXISTS `arrendatarios` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `arrendatarios` (
+  `Id` int(11) NOT NULL,
   `Nombre` varchar(100) NOT NULL,
   `Direccion` varchar(100) NOT NULL,
   `Colonia` varchar(100) NOT NULL,
   `Municipio` varchar(100) NOT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  `propiedades_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -64,17 +63,16 @@ CREATE TABLE IF NOT EXISTS `arrendatarios` (
 --
 
 DROP TABLE IF EXISTS `contratos`;
-CREATE TABLE IF NOT EXISTS `contratos` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contratos` (
+  `Id` int(11) NOT NULL,
   `IdArrendador` int(11) NOT NULL,
   `IdArrendatario` int(11) NOT NULL,
   `IdPropiedad` int(11) NOT NULL,
   `FechaInicio` date NOT NULL,
   `FechaTermino` date NOT NULL,
   `Valido` tinyint(1) NOT NULL,
-  `IdFiador` int(11) NOT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `IdFiador` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -83,14 +81,13 @@ CREATE TABLE IF NOT EXISTS `contratos` (
 --
 
 DROP TABLE IF EXISTS `fiadores`;
-CREATE TABLE IF NOT EXISTS `fiadores` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fiadores` (
+  `Id` int(11) NOT NULL,
   `Nombre` varchar(100) NOT NULL,
   `Direccion` varchar(100) NOT NULL,
   `Colonia` varchar(100) NOT NULL,
-  `Municipio` varchar(100) NOT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `Municipio` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -99,16 +96,15 @@ CREATE TABLE IF NOT EXISTS `fiadores` (
 --
 
 DROP TABLE IF EXISTS `propiedades`;
-CREATE TABLE IF NOT EXISTS `propiedades` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `propiedades` (
+  `Id` int(11) NOT NULL,
   `Nombre` varchar(100) DEFAULT NULL,
   `Direccion` varchar(100) NOT NULL,
   `Colonia` varchar(100) NOT NULL,
   `Municipio` varchar(100) NOT NULL,
   `Precio` decimal(10,0) NOT NULL,
-  `PrecioTexto` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  `PrecioTexto` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -117,8 +113,8 @@ CREATE TABLE IF NOT EXISTS `propiedades` (
 --
 
 DROP TABLE IF EXISTS `recibos`;
-CREATE TABLE IF NOT EXISTS `recibos` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `recibos` (
+  `Id` int(11) NOT NULL,
   `FechaHoraEmision` datetime NOT NULL,
   `ReceptorNombre` varchar(100) NOT NULL,
   `IdentificadorUnico` varchar(1000) NOT NULL,
@@ -127,8 +123,88 @@ CREATE TABLE IF NOT EXISTS `recibos` (
   `Importe` decimal(10,0) NOT NULL,
   `Total` decimal(10,0) NOT NULL,
   `PrecioTexto` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+  `arrendatarios_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `arrendadores`
+--
+ALTER TABLE `arrendadores`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indices de la tabla `arrendatarios`
+--
+ALTER TABLE `arrendatarios`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indices de la tabla `contratos`
+--
+ALTER TABLE `contratos`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indices de la tabla `fiadores`
+--
+ALTER TABLE `fiadores`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indices de la tabla `propiedades`
+--
+ALTER TABLE `propiedades`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indices de la tabla `recibos`
+--
+ALTER TABLE `recibos`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `arrendadores`
+--
+ALTER TABLE `arrendadores`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `arrendatarios`
+--
+ALTER TABLE `arrendatarios`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `contratos`
+--
+ALTER TABLE `contratos`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `fiadores`
+--
+ALTER TABLE `fiadores`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `propiedades`
+--
+ALTER TABLE `propiedades`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `recibos`
+--
+ALTER TABLE `recibos`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -12,7 +12,7 @@ class Recibo extends ActiveRecord
     protected $source = 'recibos';
     public function initialize()
     {
-        //this->belongs_to('TargetModelName');
+        $this->belongs_to('Arrendatarios');
         //this->has_one('TargetModelName');
         //this->has_many('TargetModelName');
         //this->has_and_belongs_to_many('TargetModelName');

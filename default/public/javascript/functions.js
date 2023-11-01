@@ -13,6 +13,40 @@ function checkFormIsValid() {
 
 }
 
+function enableCheck() {
+  var checked = $('#reciboCheckId').prop('checked');
+  var textBox = $('#recibo_ReceptorNombre');
+
+
+  if(checked){
+    $('#Nombre').prop('disabled', false);
+    textBox.prop('disabled', true);
+  }
+  else{
+    $('#Nombre').prop('disabled', true);
+    $('#Nombre').val('');
+
+    textBox.prop('disabled', false);
+    textBox.prop('value', '');
+  }
+}
+
+
+function selectOption() {
+  var checked = $('#reciboCheckId').prop('checked');
+  var textBox = $('#recibo_ReceptorNombre');
+
+  if(checked){
+    $('#Nombre').prop('disabled', false);
+    textBox.prop('disabled', true);
+  }
+  else{
+    $('#Nombre').prop('disabled', true);
+    textBox.prop('disabled', false);
+    textBox.prop('value', '');
+  }
+}
+
 
 function checkInvalidInputs() {
   $('input[required]')
@@ -74,3 +108,14 @@ else{
         $('a[href="' + window.location.href + '"]').closest('li').addClass('active').attr('aria-current', 'page'); 
       });
     }
+
+
+$('#Nombre').change(
+  function (item) {
+    var textBox = $('#recibo_ReceptorNombre');
+    var text = $('#Nombre option:selected').html();
+    if('Seleccione un valor'!== text){
+      textBox.prop('value',text);
+    }
+  }
+);

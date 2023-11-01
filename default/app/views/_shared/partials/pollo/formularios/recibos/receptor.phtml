@@ -10,14 +10,31 @@
 	<div class="card-body">
 
 
+		<div class="col-auto ">
+
+
+			<div class="form-group ">
+				<div class="form-check">
+					<label class="form-check-label mb-2">
+						<input type="checkbox" class="form-check-input" onclick="enableCheck()" id="reciboCheckId" value="checkedValue">
+						Seleccionar de una lista de arrendadores
+					</label>
+				</div>
+
+				<!-- <?= $d = (new Arrendatarios())->find(15);  var_dump($d->propiedades->Nombre) ?> -->
+				<?= Form::select('Nombre', (new Arrendatarios())->find(), 'class="form-control" disabled', '', 'Seleccione un valor', 'Id', 'Nombre') ?>
+			</div>
+		</div>
+		
+		<br>
+
 		<div class="col-auto m-0">
 			<label for="autoSizingInput">Nombre y Apellidos</label>
 			<div class="input-group">
 				<div class="input-group-text">*</div>
 				<?= Form::text('recibo.ReceptorNombre', 'class="form-control"  
-				placeholder="Direccion sin la palabra Calle"
-		maxlength="100"
-		required') ?>
+					maxlength="100"
+					required') ?>
 			</div>
 		</div>
 
