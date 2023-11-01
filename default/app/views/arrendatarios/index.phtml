@@ -51,8 +51,14 @@
 							<td scope="row">
 								<?php if($field == 'Precio'): ?>
 								<?= h(( new NumberFormatter("es-MEX", NumberFormatter::CURRENCY) )->format($item->$field))?>
+
+								<?php else: ?>
+								<?php if($field == 'propiedades_id'): ?>
+								<?= h($item->propiedades->Nombre)?>
 								<?php else: ?>
 								<?= h($item->$field)?>
+								<?php endif ?>
+
 								<?php endif ?>
 							</td>
 							<?php endif ?>
@@ -63,9 +69,7 @@
 								<?php $reciboFecha = (new DateTime($item->recibo[$len - 1]->FechaHoraEmision))->format('m') ?>
 								<?php $fechaActual = (new DateTime())->format('m')  ?>
 
-								<?php echo(var_dump($fechaActual)) ?>
-								<?php $s = 4;
-								    if($reciboFecha === $fechaActual): ?>
+								<?php  if($reciboFecha === $fechaActual): ?>
 								<span class="badge badge-success">
 									<?= h('Pagado')?>
 								</span>
