@@ -95,21 +95,31 @@
 							<td scope="row">
 								<div class="row m-1">
 
-									<div class="col-xs-12 col-md-5  p-0 m-1">
-										<?= Html::linkAction("editar/$item->Id", '<i class="fa fa-edit"></i>', ' class="btn btn-primary btn-block" ') ?>
+									<div class="col-xs-12 col-md-4  p-0 ">
+										<?= Html::linkAction("editar/$item->Id", '<i class="fa fa-edit"></i>', '
+										data-toggle="tooltip" data-placement="top" title="Editar"
+										class="btn btn-primary btn-block" ') ?>
 									</div>
 
 
+									<div class="col-xs-12 col-md-4  p-0 ">
+										<?= Html::linkAction("recibos/$item->Id", '<i class="fa fa-file"></i>',
+										 'onclick="UpdateAutoRecipe()" 
+										 data-toggle="tooltip" data-placement="top" title="Recibo automatico"
+										 class="btn btn-primary btn-warning" ') ?>
+									</div>
 
-									<div class="col-xs-12 col-md-5 p-0 m-1">
+									<div class="col-xs-12 col-md-4 p-0 ">
 
 										<?= Html::linkAction(
 										    "borrar/$item->Id",
 										    '<i class="fa fa-trash"></i>',
-										    'onclick="return confirm(\'Estas seguro?\')" class="btn btn-danger btn-block" '
+										    'data-toggle="tooltip" data-placement="top" title="Eliminiar"
+											onclick="return confirm(\'Estas seguro?\')" class="btn btn-danger btn-block" '
 										) ?>
 
 									</div>
+
 
 								</div>
 							</td>

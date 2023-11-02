@@ -4,7 +4,35 @@ function clearInputs ()
     $('input[type=number]').each( (i,input) => $(input).val(null) );
 }
 
+function UpdateAutoRecipe() {
+  //  var url = window.location.href+'recibos/'+arrendatarioId; 
+  // $.ajax({
+  //   url,
+  //   success: function (data, status) {
+  //     console.log(data, status);
+  //   },
+  //   error: function(data){
+  //     console.log(data);
+  //   }
+  // });
 
+  swal
+  .fire(
+    {
+      title: '<strong>Correcto</strong>',
+      icon: 'success',
+      html:
+        'Generando documento por favor espere' ,
+      showCloseButton: false,
+      didOpen: function (){
+        setTimeout(() => {
+          location.reload();
+        }, 1600);
+      }
+    }
+  );
+
+}
 
 function checkFormIsValid() {
 
