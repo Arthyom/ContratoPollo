@@ -25,15 +25,21 @@
 							<?php foreach (current($data->items)->fields as $field) : ?>
 							<?php if($field !== 'PrecioTexto' && $field !== 'Id'): ?>
 							<th>
-								<?= (current($data->items)->get_alias($field))?>
+							<?php if($field !== 'propiedades_id'): ?>
+						
+
+								<?= (current($data->items)->get_alias($field)) ?>
+								<?php else : ?>
+									<?= 'Propiedad'?>
+
+								<?php endif ?>
 							</th>
 
-
-
+							
 							<?php endif ?>
 							<?php endforeach?>
 							<th>
-								<?= h('Estado Pago')?>
+								<?= h('Pago')?>
 							</th>
 							<th></th>
 						</tr>
