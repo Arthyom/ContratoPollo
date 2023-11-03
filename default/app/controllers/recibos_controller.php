@@ -45,4 +45,6 @@ class RecibosController extends AppController
             echo var_dump($th);
         }
     }
+
+
 }

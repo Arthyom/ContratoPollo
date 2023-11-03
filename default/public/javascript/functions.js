@@ -14,7 +14,7 @@ function UpdateAutoRecipe() {
   //   error: function(data){
   //     console.log(data);
   //   }
-  // });
+  // }); 
 
   swal
   .fire(
@@ -41,18 +41,18 @@ function checkFormIsValid() {
 
 }
 
-function enableCheck() {
-  var checked = $('#reciboCheckId').prop('checked');
-  var textBox = $('#recibo_ReceptorNombre');
+function enableCheck(itemChecked, itemForm, itemReplace) {
+  var checked = $(itemChecked).prop('checked');
+  var textBox = $(itemForm);
 
 
   if(checked){
-    $('#Nombre').prop('disabled', false);
+    $(itemReplace).prop('disabled', false);
     textBox.prop('disabled', true);
   }
   else{
-    $('#Nombre').prop('disabled', true);
-    $('#Nombre').val('');
+    $(itemReplace).prop('disabled', true);
+    $(itemReplace).val('');
 
     textBox.prop('disabled', false);
     textBox.prop('value', '');
@@ -144,6 +144,27 @@ $('#Nombre').change(
     var text = $('#Nombre option:selected').html();
     if('Seleccione un valor'!== text){
       textBox.prop('value',text);
+    }
+  }
+);
+
+$('#Direccion').change(
+  function (item) {
+    var fecha = new Date();
+    var textBox = $('#recibo_Concepto');
+    var textBox2 = $('#recibo_PrecioUnitario');
+
+    var text = $('#Direccion option:selected').html();
+    var precioIndex = $('#Direccion').val();
+    var precio = $('#Precio').val(precioIndex);
+    var valor = $('#Precio option:selected').html()
+
+
+    
+    if('Seleccione un valor'!== text){
+      textBox.prop('value','Pago renta ' + fecha.toLocaleString('default', { month: 'long' }) +'/'+ fecha.getFullYear()+ ' - ' +text);
+      textBox2.prop('value',valor);
+
     }
   }
 );

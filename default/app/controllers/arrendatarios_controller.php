@@ -3,6 +3,7 @@
 class ArrendatariosController extends ScaffoldController
 {
     public $model = 'arrendatarios';
+    public $father ;
 
     /**
      * Resultados paginados
@@ -14,7 +15,7 @@ class ArrendatariosController extends ScaffoldController
         $this->data = (new $this->model())->paginate("page: $page", 'order: id desc');
     }
 
-    public function recibos($arrendatarioId)
+    public function recibos($arrendatarioId, $pagado = true)
     {
         View::template(null);
         View::select(null);
@@ -30,6 +31,7 @@ class ArrendatariosController extends ScaffoldController
             $currentRecipe->ReceptorNombre = $currentArrendatario->Nombre;
             $currentRecipe->arrendatarios_id = $arrendatarioId;
             $currentRecipe->Concepto = "Pago renta " . date('M - Y') . " $currentProperty->Direccion";
+            $currentRecipe->Pagado = $pagado;
 
             $paths =  $currentRecipe->crearRecibo($currentRecipe);
 
@@ -55,4 +57,25 @@ class ArrendatariosController extends ScaffoldController
 
     }
 
+    public function historial($arrendatarioId)
+    {
+        $this->father = (new Arrendatarios())->find($arrendatarioId);
+        $this->data = (new Recibo())->paginate(" arrendatarios_id = $arrendatarioId");
+    }
+
+    public function marcar($arrendatarioId, $id, $creado = true)
+    {
+
+
+
+        try {
+            $item = (new Recibo())->find($id);
+            $item->Pagado = $creado;
+            $item->update($item);
+            Redirect::to("$this->controller_name/historial/$arrendatarioId");
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
 }

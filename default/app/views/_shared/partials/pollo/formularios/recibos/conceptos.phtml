@@ -9,7 +9,36 @@
 <div id="collapseTwoConcepto" class="collapse" aria-labelledby="concepto" data-parent="#accordionExample">
 	<div class="card-body">
 
+
+
 		<div class="col-12 m-0">
+
+			<div class="form-group ">
+				<div class="form-check">
+					<label class="form-check-label mb-2">
+						<input type="checkbox" class="form-check-input" onclick="
+							enableCheck('#conceptoCheckId','#recibo_Concepto', '#Direccion');
+							enableCheck('#conceptoCheckId','#recibo_PrecioUnitario', '#Direccion');
+							enableCheck('#conceptoCheckId','#recibo_PrecioUnitario', '#Precio');
+							" id="conceptoCheckId" value="checkedValue">
+						Seleccionar de una lista de propiedades
+					</label>
+				</div>
+
+
+				<?= Form::select('Direccion', (new Propiedades())->find(), 'class="form-control" disabled', '', 'Seleccione un valor', 'Id', 'Direccion') ?>
+				<?= Form::select(
+				    'Precio',
+				    (new Propiedades())->find(),
+				    'class="form-control" disabled hidden',
+				    '',
+				    'Seleccione un valor',
+				    'Id',
+				    'Precio'
+				) ?>
+
+			</div>
+
 			<label for="autoSizingInput" class="mb-0 ">Concepto(s)</label>
 			<div class="input-group">
 				<div class="input-group-text">*</div>

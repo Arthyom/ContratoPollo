@@ -16,16 +16,18 @@
 			<div class="form-group ">
 				<div class="form-check">
 					<label class="form-check-label mb-2">
-						<input type="checkbox" class="form-check-input" onclick="enableCheck()" id="reciboCheckId" value="checkedValue">
+						<input type="checkbox" class="form-check-input"
+							onclick="enableCheck('#reciboCheckId', '#recibo_ReceptorNombre', '#Nombre') "
+							id="reciboCheckId" value="checkedValue">
 						Seleccionar de una lista de arrendadores
 					</label>
 				</div>
 
-				<!-- <?= $d = (new Arrendatarios())->find(15);  var_dump($d->propiedades->Nombre) ?> -->
 				<?= Form::select('Nombre', (new Arrendatarios())->find(), 'class="form-control" disabled', '', 'Seleccione un valor', 'Id', 'Nombre') ?>
+
 			</div>
 		</div>
-		
+
 		<br>
 
 		<div class="col-auto m-0">

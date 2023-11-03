@@ -25,17 +25,17 @@
 							<?php foreach (current($data->items)->fields as $field) : ?>
 							<?php if($field !== 'PrecioTexto' && $field !== 'Id'): ?>
 							<th>
-							<?php if($field !== 'propiedades_id'): ?>
-						
+								<?php if($field !== 'propiedades_id'): ?>
+
 
 								<?= (current($data->items)->get_alias($field)) ?>
 								<?php else : ?>
-									<?= 'Propiedad'?>
+								<?= 'Propiedad'?>
 
 								<?php endif ?>
 							</th>
 
-							
+
 							<?php endif ?>
 							<?php endforeach?>
 							<th>
@@ -78,15 +78,16 @@
 
 								<?php $len = sizeof($item->recibo) ?>
 								<?php if($len > 0) :  ?>
+								<?php $recibo = $item->recibo[$len - 1] ?>
 								<?php $reciboFecha = (new DateTime($item->recibo[$len - 1]->FechaHoraEmision))->format('m') ?>
 								<?php $fechaActual = (new DateTime())->format('m')  ?>
 
-								<?php  if($reciboFecha === $fechaActual): ?>
+								<?php  if($reciboFecha === $fechaActual && $recibo->Pagado): ?>
 								<span class="badge badge-success text-center">
 									<?= h('Pagado')?>
 								</span>
 
-								<?php elseif($fechaActual > $reciboFecha) : ?>
+								<?php elseif($fechaActual > $reciboFecha || !$recibo->Pagado) : ?>
 								<span class="badge badge-warning text-center">
 									<?= h('Por Pagar')?>
 								</span>
@@ -101,21 +102,44 @@
 							<td scope="row">
 								<div class="row m-1">
 
-									<div class="col-xs-12 col-md-4  p-0 ">
+									<div class="col-xs-12 col-md-2  p-0 ">
 										<?= Html::linkAction("editar/$item->Id", '<i class="fa fa-edit"></i>', '
 										data-toggle="tooltip" data-placement="top" title="Editar"
 										class="btn btn-primary btn-block" ') ?>
 									</div>
 
 
-									<div class="col-xs-12 col-md-4  p-0 ">
-										<?= Html::linkAction("recibos/$item->Id", '<i class="fa fa-file"></i>',
-										 'onclick="UpdateAutoRecipe()" 
+									<div class="col-xs-12 col-md-2  p-0 ">
+										<?= Html::linkAction(
+										    "recibos/$item->Id",
+										    '<i class="fa fa-file"></i>',
+										    'onclick="UpdateAutoRecipe()" 
 										 data-toggle="tooltip" data-placement="top" title="Recibo automatico"
-										 class="btn btn-primary btn-warning" ') ?>
+										 class="btn btn-primary btn-warning btn-block" '
+										) ?>
 									</div>
 
-									<div class="col-xs-12 col-md-4 p-0 ">
+									<div class="col-xs-12 col-md-2  p-0 ">
+										<?= Html::linkAction(
+										    "historial/$item->Id",
+										    '<i class="fa fa-chart-line"></i>',
+										    ' 
+										 data-toggle="tooltip" data-placement="top" title="Historial de pagos"
+										 class="btn btn-primary btn-success btn-block" '
+										) ?>
+									</div>
+
+									<div class="col-xs-12 col-md-2  p-0 ">
+										<?= Html::linkAction(
+										    "recibos/$item->Id/0",
+										    '<i class="fa fa-file-excel"></i>',
+										    'onclick="UpdateAutoRecipe()" 
+										 data-toggle="tooltip" data-placement="top" title="No pagado"
+										 class="btn btn-primary btn-secondary btn-block" '
+										) ?>
+									</div>
+
+									<div class="col-xs-12 col-md-2 p-0 ">
 
 										<?= Html::linkAction(
 										    "borrar/$item->Id",
