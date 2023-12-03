@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 01-11-2023 a las 08:40:13
+-- Tiempo de generación: 03-12-2023 a las 10:08:35
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.4.33
 
@@ -30,14 +30,15 @@ USE `contratos`;
 --
 
 DROP TABLE IF EXISTS `arrendadores`;
-CREATE TABLE `arrendadores` (
-  `Id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `arrendadores` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) NOT NULL,
   `Direccion` varchar(100) NOT NULL,
   `Colonia` varchar(100) NOT NULL,
   `Usuario` varchar(100) NOT NULL,
   `Pass` varchar(100) NOT NULL,
-  `Municipio` varchar(100) NOT NULL
+  `Municipio` varchar(100) NOT NULL,
+  PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -47,13 +48,14 @@ CREATE TABLE `arrendadores` (
 --
 
 DROP TABLE IF EXISTS `arrendatarios`;
-CREATE TABLE `arrendatarios` (
-  `Id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `arrendatarios` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) NOT NULL,
   `Direccion` varchar(100) NOT NULL,
   `Colonia` varchar(100) NOT NULL,
   `Municipio` varchar(100) NOT NULL,
-  `propiedades_id` int(11) DEFAULT NULL
+  `propiedades_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -63,15 +65,16 @@ CREATE TABLE `arrendatarios` (
 --
 
 DROP TABLE IF EXISTS `contratos`;
-CREATE TABLE `contratos` (
-  `Id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `contratos` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `IdArrendador` int(11) NOT NULL,
   `IdArrendatario` int(11) NOT NULL,
   `IdPropiedad` int(11) NOT NULL,
   `FechaInicio` date NOT NULL,
   `FechaTermino` date NOT NULL,
   `Valido` tinyint(1) NOT NULL,
-  `IdFiador` int(11) NOT NULL
+  `IdFiador` int(11) NOT NULL,
+  PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -81,12 +84,13 @@ CREATE TABLE `contratos` (
 --
 
 DROP TABLE IF EXISTS `fiadores`;
-CREATE TABLE `fiadores` (
-  `Id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `fiadores` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) NOT NULL,
   `Direccion` varchar(100) NOT NULL,
   `Colonia` varchar(100) NOT NULL,
-  `Municipio` varchar(100) NOT NULL
+  `Municipio` varchar(100) NOT NULL,
+  PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -96,14 +100,15 @@ CREATE TABLE `fiadores` (
 --
 
 DROP TABLE IF EXISTS `propiedades`;
-CREATE TABLE `propiedades` (
-  `Id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `propiedades` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) DEFAULT NULL,
   `Direccion` varchar(100) NOT NULL,
   `Colonia` varchar(100) NOT NULL,
   `Municipio` varchar(100) NOT NULL,
   `Precio` decimal(10,0) NOT NULL,
-  `PrecioTexto` varchar(100) DEFAULT NULL
+  `PrecioTexto` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -113,8 +118,8 @@ CREATE TABLE `propiedades` (
 --
 
 DROP TABLE IF EXISTS `recibos`;
-CREATE TABLE `recibos` (
-  `Id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `recibos` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `FechaHoraEmision` datetime NOT NULL,
   `ReceptorNombre` varchar(100) NOT NULL,
   `IdentificadorUnico` varchar(1000) NOT NULL,
@@ -123,88 +128,10 @@ CREATE TABLE `recibos` (
   `Importe` decimal(10,0) NOT NULL,
   `Total` decimal(10,0) NOT NULL,
   `PrecioTexto` varchar(100) DEFAULT NULL,
-  `arrendatarios_id` int(11) DEFAULT NULL
+  `arrendatarios_id` int(11) DEFAULT NULL,
+  `Pagado` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `arrendadores`
---
-ALTER TABLE `arrendadores`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indices de la tabla `arrendatarios`
---
-ALTER TABLE `arrendatarios`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indices de la tabla `contratos`
---
-ALTER TABLE `contratos`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indices de la tabla `fiadores`
---
-ALTER TABLE `fiadores`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indices de la tabla `propiedades`
---
-ALTER TABLE `propiedades`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indices de la tabla `recibos`
---
-ALTER TABLE `recibos`
-  ADD PRIMARY KEY (`Id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `arrendadores`
---
-ALTER TABLE `arrendadores`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `arrendatarios`
---
-ALTER TABLE `arrendatarios`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `contratos`
---
-ALTER TABLE `contratos`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `fiadores`
---
-ALTER TABLE `fiadores`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `propiedades`
---
-ALTER TABLE `propiedades`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `recibos`
---
-ALTER TABLE `recibos`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
