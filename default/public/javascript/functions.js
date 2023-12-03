@@ -48,13 +48,13 @@ function enableCheck(itemChecked, itemForm, itemReplace) {
 
   if(checked){
     $(itemReplace).prop('disabled', false);
-    textBox.prop('disabled', true);
+    textBox.prop('readonly', true);
   }
   else{
     $(itemReplace).prop('disabled', true);
     $(itemReplace).val('');
 
-    textBox.prop('disabled', false);
+    textBox.prop('readonly', false);
     textBox.prop('value', '');
   }
 }
@@ -66,11 +66,11 @@ function selectOption() {
 
   if(checked){
     $('#Nombre').prop('disabled', false);
-    textBox.prop('disabled', true);
+    textBox.prop('readonly', true);
   }
   else{
     $('#Nombre').prop('disabled', true);
-    textBox.prop('disabled', false);
+    textBox.prop('readonly', false);
     textBox.prop('value', '');
   }
 }
@@ -162,7 +162,7 @@ $('#Direccion').change(
 
     
     if('Seleccione un valor'!== text){
-      textBox.prop('value','Pago renta ' + fecha.toLocaleString('default', { month: 'long' }) +'/'+ fecha.getFullYear()+ ' - ' +text);
+      textBox.prop('value','Pago renta ' + fecha.toLocaleString('default', { month: 'long' }) +' - '+ fecha.getFullYear()+ ' - ' +text);
       textBox2.prop('value',valor);
 
     }
