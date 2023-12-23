@@ -34,6 +34,7 @@ class ArrendatariosController extends ScaffoldController
             $currentRecipe->Pagado = $pagado;
 
             $paths =  $currentRecipe->crearRecibo($currentRecipe);
+            //to use double quotes in php, you should use slash then the double quotes
 
             if (file_exists($paths ['fullPathSavedContract'])) {
                 header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
