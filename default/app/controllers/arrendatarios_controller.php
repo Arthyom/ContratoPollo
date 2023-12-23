@@ -35,6 +35,7 @@ class ArrendatariosController extends ScaffoldController
 
             $paths =  $currentRecipe->crearRecibo($currentRecipe);
             $pathsName = $paths['fullNameSavedContract'];
+            $contentDisp = "Content-Disposition: attachment; filename=". '"'. $pathsName .'"';
 
             if (file_exists($paths ['fullPathSavedContract'])) {
                 header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
@@ -42,7 +43,7 @@ class ArrendatariosController extends ScaffoldController
                 header("Content-Type: application/octet-stream");
                 header("Content-Transfer-Encoding: Binary");
                 header("Content-Length:".filesize($paths['fullPathSavedContract']));
-                header("Content-Disposition: attachment; filename=\"$pathsName\"");
+                header($contentDisp);
                 readfile($paths['fullPathSavedContract']);
             } else {
                 header($_SERVER["SERVER_PROTOCOL"] . " 500 ERROR");
