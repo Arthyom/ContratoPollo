@@ -34,8 +34,6 @@ class ArrendatariosController extends ScaffoldController
             $currentRecipe->Pagado = $pagado;
 
             $paths =  $currentRecipe->crearRecibo($currentRecipe);
-            // $pathsName = $paths['fullNameSavedContract'];
-            // $contentDisp = "Content-Disposition: attachment; filename=". '"'. $pathsName .'"';
 
             if (file_exists($paths ['fullPathSavedContract'])) {
                 header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
