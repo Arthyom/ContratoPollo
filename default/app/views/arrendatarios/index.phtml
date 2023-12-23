@@ -23,15 +23,12 @@
 						<tr>
 							<th></th>
 							<?php foreach (current($data->items)->fields as $field) : ?>
-							<?php if($field !== 'PrecioTexto' && $field !== 'Id'): ?>
+							<?php if($field !== 'PrecioTexto' && $field !== 'Id' && $field !== 'Direccion'): ?>
 							<th>
 								<?php if($field !== 'propiedades_id'): ?>
-
-
 								<?= (current($data->items)->get_alias($field)) ?>
 								<?php else : ?>
 								<?= 'Propiedad'?>
-
 								<?php endif ?>
 							</th>
 
@@ -57,11 +54,11 @@
 							</td>
 							<?php foreach ($item->fields as $field) : ?>
 
-							<?php if($field !== 'PrecioTexto' && $field !== 'Id'): ?>
+							<?php if($field !== 'PrecioTexto' && $field !== 'Id' && $field !== 'Direccion'): ?>
 							<td scope="row" class="align-middle">
 
 								<?php if($field == 'Precio'): ?>
-								<?= h(( new NumberFormatter("es-MEX", NumberFormatter::CURRENCY) )->format($item->$field))?>
+								<?= h((new NumberFormatter("es-MEX", NumberFormatter::CURRENCY))->format($item->$field))?>
 
 								<?php else: ?>
 								<?php if($field == 'propiedades_id'): ?>
