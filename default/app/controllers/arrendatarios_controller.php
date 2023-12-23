@@ -34,7 +34,7 @@ class ArrendatariosController extends ScaffoldController
             $currentRecipe->Pagado = $pagado;
 
             $paths =  $currentRecipe->crearRecibo($currentRecipe);
-
+            $pathsName = $paths['fullNameSavedContract'];
 
             if (file_exists($paths ['fullPathSavedContract'])) {
                 header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
@@ -42,7 +42,7 @@ class ArrendatariosController extends ScaffoldController
                 header("Content-Type: application/octet-stream");
                 header("Content-Transfer-Encoding: Binary");
                 header("Content-Length:".filesize($paths['fullPathSavedContract']));
-                header("Content-Disposition: attachment; filename=\"{$paths['fullNameSavedContract']}\"");
+                header("Content-Disposition: attachment; filename=\"$pathsName\"");
                 readfile($paths['fullPathSavedContract']);
             } else {
                 header($_SERVER["SERVER_PROTOCOL"] . " 500 ERROR");
