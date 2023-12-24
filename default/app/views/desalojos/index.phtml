@@ -1,0 +1,29 @@
+<div class="card mb-3">
+
+	<div class="card-body">
+
+
+		<?= View::partial('pollo/formularios/plantillas/titulo_controlador', null, ['titulo' => $controller_name])?>
+
+		<div class="row">
+			<?= View::partial('pollo/formularios/mensajes/obligatorio')?>
+		</div>
+
+		<?= Form::open('contratos/crearContrato', 'post', 'id="contratos_crear"') ?>
+
+		<div class="accordion" id="accordionExample">
+			<div class="card">
+				<?= View::partial('pollo/formularios/contratos/arrendamiento/arrendatario')?>
+
+				<?= View::partial('pollo/formularios/contratos/arrendamiento/fiador')?>
+
+				<?= View::partial('pollo/formularios/contratos/arrendamiento/propiedad')?>
+			</div>
+		</div>
+
+		<?= View::partial('pollo/formularios/plantillas/botones_form')?>
+
+		<?= Form::close() ?>
+	</div>
+
+</div>

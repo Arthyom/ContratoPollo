@@ -21,7 +21,7 @@
 					class="table w-100 d-block d-md-table text-center align-middle table-striped table-inverse table-responsive table-bordered table-hover">
 					<thead class="thead-dark">
 						<tr>
-							<th></th>
+							<th>#</th>
 							<?php foreach (current($data->items)->fields as $field) : ?>
 							<?php if($field !== 'PrecioTexto' && $field !== 'Id' && $field !== 'Direccion'): ?>
 							<th>
@@ -99,14 +99,18 @@
 							<td scope="row">
 								<div class="row m-1">
 
-									<div class="col-xs-12 col-md-2  p-0 ">
+									<div class="desk-content col-md-2  p-0 ">
 										<?= Html::linkAction("editar/$item->Id", '<i class="fa fa-edit"></i>', '
 										data-toggle="tooltip" data-placement="top" title="Editar"
 										class="btn btn-primary btn-block" ') ?>
 									</div>
 
+									<div class="phone-content col-md-2  p-0 ">
+										<?= Html::linkAction("editar/$item->Id", '<p class="m-0 text-success">Editar</p>') ?>
+									</div>
 
-									<div class="col-xs-12 col-md-2  p-0 ">
+
+									<div class="desk-content col-md-2  p-0 ">
 										<?= Html::linkAction(
 										    "recibos/$item->Id",
 										    '<i class="fa fa-file"></i>',
@@ -116,7 +120,14 @@
 										) ?>
 									</div>
 
-									<div class="col-xs-12 col-md-2  p-0 ">
+									<div class="phone-content col-md-2  p-0 ">
+										<?= Html::linkAction(
+										    "recibos/$item->Id",
+										    '<p class="text-secondary m-0">Recibo</p>'
+										) ?>
+									</div>
+
+									<div class="desk-content col-md-2  p-0 ">
 										<?= Html::linkAction(
 										    "historial/$item->Id",
 										    '<i class="fa fa-chart-line"></i>',
@@ -126,7 +137,14 @@
 										) ?>
 									</div>
 
-									<div class="col-xs-12 col-md-2  p-0 ">
+									<div class="phone-content col-md-2  p-0 ">
+										<?= Html::linkAction(
+										    "historial/$item->Id",
+										    '<p class="text-info m-0">Historial</p>'
+										) ?>
+									</div>
+
+									<div class="desk-content col-md-2  p-0 ">
 										<?= Html::linkAction(
 										    "recibos/$item->Id/0",
 										    '<i class="fa fa-file-excel"></i>',
@@ -136,13 +154,31 @@
 										) ?>
 									</div>
 
-									<div class="col-xs-12 col-md-2 p-0 ">
+									<div class="phone-content col-md-2  p-0 ">
+										<?= Html::linkAction(
+										    "recibos/$item->Id/0",
+										    '<p class="m-0 text-warning">Adeudo</p>'
+										) ?>
+									</div>
+
+									<div class="desk-content col-md-2 p-0 desk-content">
 
 										<?= Html::linkAction(
 										    "borrar/$item->Id",
 										    '<i class="fa fa-trash"></i>',
 										    'data-toggle="tooltip" data-placement="top" title="Eliminiar"
-											onclick="return confirm(\'Estas seguro?\')" class="btn btn-danger btn-block" '
+											onclick="return confirm(\'Estas seguro?\')" class=" btn btn-danger btn-block" '
+										) ?>
+
+									</div>
+
+
+
+									<div class=" p-0  col-md-2 phone-content">
+
+										<?= Html::linkAction(
+										    "borrar/$item->Id",
+										    "<p class='text-danger m-0'>Eliminar</p>"
 										) ?>
 
 									</div>

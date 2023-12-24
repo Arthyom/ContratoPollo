@@ -465,3 +465,13 @@
                 border-radius: 6px;
     }
 }
+
+   @media all and (min-width: 768px) {
+    .desk-content {display:block;}
+    .phone-content {display:none;}
+}
+
+@media all and (max-width: 767px) {
+    .desk-content {display:none;}
+    .phone-content {display:block;}
+}
