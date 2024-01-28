@@ -19,10 +19,10 @@
  */
 
 //*Locale*
-//setlocale(LC_ALL, 'es_ES');
+setlocale(LC_ALL, 'es_ES');
 
 //*Timezone*
-//ini_set('date.timezone', 'America/New_York');
+ini_set('date.timezone', 'America/Mexico_City');
 
 /**
  * @TODO
@@ -41,7 +41,7 @@ const APP_CHARSET = 'UTF-8';
  */
 const PRODUCTION = false;
 
- $environment = 'LOCAL';
+$environment = 'LOCAL';
 
 /*
  * Descomentar para mostrar los errores
@@ -79,17 +79,17 @@ define('CORE_PATH', dirname(dirname(APP_PATH)).'/core/');
  *
  *  EN PRODUCCION ESTA CONSTANTE DEBERÍA SER ESTABLECIDA MANUALMENTE
  */
- $environment = strpos($_SERVER['HTTP_HOST'], 'www.documentos.') !== false ? 'PRODUCTION' : $environment;
- $environment = strpos($_SERVER['HTTP_HOST'], 'www.qa.documentos.') !== false && $environment == 'LOCAL' ? 'QA' : $environment;
+$environment = strpos($_SERVER['HTTP_HOST'], 'www.documentos.') !== false ? 'PRODUCTION' : $environment;
+$environment = strpos($_SERVER['HTTP_HOST'], 'www.qa.documentos.') !== false && $environment == 'LOCAL' ? 'QA' : $environment;
 
- 
+
 switch ($environment) {
     case 'LOCAL':
         define('PUBLIC_PATH', substr($_SERVER['SCRIPT_NAME'], 0, -9)); // - index.php string[9]
         break;
 
     case 'PRODUCTION':
-        define('PUBLIC_PATH', 'https://www.documentos.alfredowflsyo.com.co/' );
+        define('PUBLIC_PATH', 'https://www.documentos.alfredowflsyo.com.co/');
         break;
 
     case 'QA':
