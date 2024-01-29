@@ -10,9 +10,9 @@ class ArrendatariosController extends ScaffoldController
      *
      * @param int $page  Página a mostrar
      */
-    public function index($page = 1)
+    public function index($page = 1, $orderBy = 'Nombre')
     {
-        $this->data = (new $this->model())->paginate("page: $page", 'order: id desc');
+        $this->data = (new $this->model())->paginate("page: $page", "order: Nombre desc");
     }
 
     public function recibos($arrendatarioId, $pagado = true)

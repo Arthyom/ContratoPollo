@@ -18,9 +18,9 @@ abstract class ScaffoldController extends AdminController
      *
      * @param int $page  Página a mostrar
      */
-    public function index($page = 1)
+    public function index($page = 1, $orderBy = 'Id')
     {
-        $this->data = (new $this->model())->paginate("page: $page", 'order: id desc');
+        $this->data = (new $this->model())->paginate("page: $page", "order: $orderBy desc");
     }
 
     /**

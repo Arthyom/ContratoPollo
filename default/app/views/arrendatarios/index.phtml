@@ -23,9 +23,9 @@
 						<tr>
 							<th>#</th>
 							<?php foreach (current($data->items)->fields as $field) : ?>
-							<?php if($field !== 'PrecioTexto' && $field !== 'Id' && $field !== 'Direccion'): ?>
+							<?php if($field !== 'PrecioTexto'  && $field !== 'propiedades_id'  && $field !== 'Id' && $field !== 'Direccion'): ?>
 							<th>
-								<?php if($field !== 'propiedades_id'): ?>
+								<?php if($field !== 'propiedades_id' && $field !== 'Finalizado'): ?>
 								<?= (current($data->items)->get_alias($field)) ?>
 								<?php else : ?>
 								<?= 'Propiedad'?>
@@ -54,7 +54,7 @@
 							</td>
 							<?php foreach ($item->fields as $field) : ?>
 
-							<?php if($field !== 'PrecioTexto' && $field !== 'Id' && $field !== 'Direccion'): ?>
+							<?php if($field !== 'PrecioTexto' && $field !== 'Id' && $field !== 'Finalizado' && $field !== 'Direccion'): ?>
 							<td scope="row" class="align-middle">
 
 								<?php if($field == 'Precio'): ?>
@@ -79,16 +79,21 @@
 								<?php $reciboFecha = (new DateTime($item->recibo[$len - 1]->FechaHoraEmision))->format('m') ?>
 								<?php $fechaActual = (new DateTime())->format('m')  ?>
 
-								<?php  if($reciboFecha === $fechaActual && $recibo->Pagado): ?>
+								<?php  if(($reciboFecha === $fechaActual && $recibo->Pagado) && !$item->Finalizado): ?>
 								<span class="badge badge-success text-center">
 									<?= h('Pagado')?>
 								</span>
 
-								<?php elseif($fechaActual > $reciboFecha || !$recibo->Pagado) : ?>
+								<?php elseif(($fechaActual > $reciboFecha  || !$recibo->Pagado) && !$item->Finalizado) : ?>
 								<span class="badge badge-warning text-center">
 									<?= h('Por Pagar')?>
 								</span>
+								<?php elseif($item->Finalizado) : ?>
+								<span class="badge badge-danger text-center">
+									<?= h('Finalizado')?>
+								</span>
 								<?php endif ?>
+
 								<?php else: ?>
 								<span class="badge badge-secondary text-center">
 									<?= h('No Iniciado')?>

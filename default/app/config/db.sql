@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 03-12-2023 a las 10:08:35
+-- Tiempo de generación: 29-01-2024 a las 00:27:20
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.4.33
 
@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `arrendatarios` (
   `Colonia` varchar(100) NOT NULL,
   `Municipio` varchar(100) NOT NULL,
   `propiedades_id` int(11) DEFAULT NULL,
+  `Finalizado` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -76,6 +77,24 @@ CREATE TABLE IF NOT EXISTS `contratos` (
   `IdFiador` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `desalojos`
+--
+
+DROP TABLE IF EXISTS `desalojos`;
+CREATE TABLE IF NOT EXISTS `desalojos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fechaDesalojo` date DEFAULT NULL,
+  `Arrendatarios_id` int(11) DEFAULT NULL,
+  `Propiedades_id` int(11) DEFAULT NULL,
+  `total` varchar(150) DEFAULT NULL,
+  `mesesAdeudo` varchar(150) DEFAULT NULL,
+  `anio` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -108,6 +127,7 @@ CREATE TABLE IF NOT EXISTS `propiedades` (
   `Municipio` varchar(100) NOT NULL,
   `Precio` decimal(10,0) NOT NULL,
   `PrecioTexto` varchar(100) DEFAULT NULL,
+  `Ocupado` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

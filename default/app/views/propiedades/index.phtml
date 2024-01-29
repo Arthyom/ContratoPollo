@@ -1,0 +1,122 @@
+<div class="card mb-3">
+	<div class="card-body">
+		<h1>
+			<?= ucwords("$model") ?>
+		</h1>
+
+		<div class="row mb-3">
+
+			<div class="actions col-6">
+				<?= Html::linkAction("crear/", 'Crear ', 'class="btn btn-primary btn-block"')?>
+			</div>
+			<div class="actions col-6">
+				<?= Html::link("", 'Inicio', 'class="btn btn-danger btn-block"')?>
+			</div>
+		</div>
+
+		<?php if (isset($data->items) && (count($data->items) > 0)) : ?>
+		<div class="row">
+			<div class="col-12">
+				<table
+					class="table w-100 d-block d-md-table text-center table-striped table-inverse table-responsive table-bordered table-hover">
+					<thead class="thead-dark">
+						<tr>
+							<th>#</th>
+							<?php foreach (current($data->items)->fields as $field) : ?>
+							<?php if($field !== 'PrecioTexto' && $field !== 'Id' ): ?>
+							<th>
+								<?= (current($data->items)->get_alias($field))?>
+							</th>
+							<?php endif ?>
+							<?php endforeach?>
+							<th></th>
+						</tr>
+					</thead>
+
+					<thead>
+
+					</thead>
+					<tbody>
+						<?php foreach ($data->items as $i => $item) : ?>
+						<tr>
+							<td><?= h($i + 1) ?></td>
+							<?php foreach ($item->fields as $field) : ?>
+							<?php if($field !== 'PrecioTexto' && $field !== 'Id'): ?>
+							<td scope="row">
+								<?php if($field == 'Precio'): ?>
+								<?= h((new NumberFormatter("es-MEX", NumberFormatter::CURRENCY))->format($item->$field))?>
+								<?php elseif($field == 'Ocupado'): ?>
+									<?php if(!$item->$field) : ?>
+										<span class="badge badge-success text-center">
+											<?= h('Ocupado')?>
+										</span>		
+									<?php else: ?>
+										<span class="badge badge-danger text-center">
+											<?= h('Libre')?>
+										</span>		
+										<?php endif ?>
+					
+								<?php else: ?>
+								<?= h($item->$field)?>
+								<?php endif ?>
+							</td>
+							<?php endif ?>
+							<?php endforeach?>
+							<td scope="row">
+								<div class="row m-1">
+
+									<div class="desk-content col-md-5  p-0 m-1">
+										<?= Html::linkAction(
+										    "editar/$item->Id",
+										    '<i class="fa fa-edit"></i>',
+										    ' class="btn btn-primary btn-block" '
+										) ?>
+									</div>
+
+									<div class="phone-content col-md-5  p-0 m-1">
+										<?= Html::linkAction(
+										    "editar/$item->Id",
+										    '<p class="m-0 text-primary">Editar</p>'
+										) ?>
+									</div>
+
+
+
+
+									<div class="desk-content col-md-5 p-0 m-1">
+
+										<?= Html::linkAction(
+										    "borrar/$item->Id",
+										    '<i class="fa fa-trash"></i>',
+										    'onclick="return confirm(\'Estas seguro?\')" class="btn btn-danger btn-block" '
+										) ?>
+
+									</div>
+
+									<div class="phone-content col-md-5 p-0 m-1">
+
+										<?= Html::linkAction(
+										    "borrar/$item->Id",
+										    '<p class="m-0 text-danger">Eliminar</p>'
+										) ?>
+
+									</div>
+
+								</div>
+							</td>
+						</tr>
+						<?php endforeach?>
+					</tbody>
+				</table>
+
+				<?php View::partial('paginators/digg', false, array('page' => $data ,'url' => Router::get('controller_path').'/index')) ?>
+
+				<?php else: ?>
+				<p>No hay registros para mostrar</p>
+			</div>
+
+		</div>
+
+		<?php endif ?>
+	</div>
+</div>
