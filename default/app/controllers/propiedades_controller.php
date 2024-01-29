@@ -7,6 +7,6 @@ class PropiedadesController extends ScaffoldController
 
     public function index($page = 1)
     {
-        $this->data = (new $this->model())->paginate("page: $page", "order: Nombre desc");
+        $this->data = (new $this->model())->paginate("page: $page", "order: Nombre asc", "per_page: 15");
     }
 }

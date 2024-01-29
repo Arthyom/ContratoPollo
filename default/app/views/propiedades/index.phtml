@@ -46,7 +46,7 @@
 								<?php if($field == 'Precio'): ?>
 								<?= h((new NumberFormatter("es-MEX", NumberFormatter::CURRENCY))->format($item->$field))?>
 								<?php elseif($field == 'Ocupado'): ?>
-									<?php if(!$item->$field) : ?>
+									<?php if($item->$field) : ?>
 										<span class="badge badge-success text-center">
 											<?= h('Ocupado')?>
 										</span>		
