@@ -104,7 +104,7 @@ class Contratos extends ActiveRecord
             $template->saveAs($fullPathSavedContract);
 
             try {
-                Settings::setPdfRendererName(Settings::PDF_RENDERER_DOMPDF);
+                Settings::setPdfRendererName(Settings::w);
                 Settings::setPdfRendererPath('.');
                 $phpWord = IOFactory::load($fullPathSavedContract, 'Word2007');
                 $phpWord->save($pdfFullPathSavedContract);
@@ -118,7 +118,7 @@ class Contratos extends ActiveRecord
 
             return [
                 'fullPathSavedContract' => $fullPathSavedContract,
-                'fullNameSavedContract' => $fullNameSavedContract
+                'fullNameSavedContract' => $fullPathSavedContract
             ];
         }
 
