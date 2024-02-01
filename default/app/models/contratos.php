@@ -39,7 +39,7 @@ class Contratos extends ActiveRecord
     public function crearContrato($arrendador, $arrendatario, $propiedad, $fiador)
     {
         $arrendador->begin();
-        $propiedad->PrecioTexto = strtoupper(( new NumberFormatter("es-MEX", NumberFormatter::SPELLOUT) )->format($propiedad->Precio));
+        $propiedad->PrecioTexto = strtoupper((new NumberFormatter("es-MEX", NumberFormatter::SPELLOUT))->format($propiedad->Precio));
         if($arrendador->create() && $arrendatario->create() && $propiedad->create() && $fiador->create()) {
 
             $fileBasePath = APP_PATH.'temp/documentos/arrendamiento/';
@@ -66,7 +66,7 @@ class Contratos extends ActiveRecord
                 '${Fiador.Colonia}' => $fiador->Colonia,
                 '${Fiador.Municipio}' => $fiador->Municipio,
 
-                '${Propiedad.Precio}' => ( new NumberFormatter("es-MEX", NumberFormatter::CURRENCY) )->format($propiedad->Precio) ,
+                '${Propiedad.Precio}' => (new NumberFormatter("es-MEX", NumberFormatter::CURRENCY))->format($propiedad->Precio) ,
                 '${Propiedad.PrecioTexto}' => $propiedad->PrecioTexto,
                 '${Propiedad.Direccion}' => $propiedad->Direccion,
                 '${Propiedad.Colonia}' => $propiedad->Colonia,
@@ -107,7 +107,7 @@ class Contratos extends ActiveRecord
                 Settings::setPdfRendererName(Settings::PDF_RENDERER_DOMPDF);
                 Settings::setPdfRendererPath('.');
                 $phpWord = IOFactory::load($fullPathSavedContract, 'Word2007');
-                $phpWord->save($pdfFullPathSavedContract, 'PDF');
+                $phpWord->save($pdfFullPathSavedContract);
                 $fullNameSavedContract = $pdfFullNameSavedContract;
                 $fullPathSavedContract = $pdfFullPathSavedContract;
             } catch (\Throwable $th) {
