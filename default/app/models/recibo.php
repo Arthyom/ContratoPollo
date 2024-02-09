@@ -23,7 +23,7 @@ class Recibo extends ActiveRecord
         $recibo->FechaHoraEmision = date('Y-m-d H:i:s', strtotime('-1 hour'));
         $recibo->Importe = $recibo->PrecioUnitario * 1;
         $recibo->Total = $recibo->PrecioUnitario * 1;
-        $recibo->PrecioTexto = strtoupper(( new NumberFormatter("es-MEX", NumberFormatter::SPELLOUT) )->format($recibo->Total));
+        $recibo->PrecioTexto = strtoupper((new NumberFormatter("es-MEX", NumberFormatter::SPELLOUT))->format($recibo->Total));
         $recibo->IdentificadorUnico = uniqid() .' - '. $recibo->Concepto ;
 
 
@@ -44,13 +44,13 @@ class Recibo extends ActiveRecord
                 '${Recibo.FechaHoraEmision}' => date('d/m/Y H:i:s', strtotime($recibo->FechaHoraEmision)),
                 '${Recibo.IdentificadorUnico}' => $recibo->IdentificadorUnico,
                 '${Recibo.Concepto}' => $recibo->Concepto,
-                '${Recibo.PrecioUnitario}' => ( new NumberFormatter("es-MEX", NumberFormatter::CURRENCY) )->format($recibo->PrecioUnitario),
-                '${Recibo.Importe}' => ( new NumberFormatter("es-MEX", NumberFormatter::CURRENCY) )->format($recibo->Importe)
+                '${Recibo.PrecioUnitario}' => (new NumberFormatter("es-MEX", NumberFormatter::CURRENCY))->format($recibo->PrecioUnitario),
+                '${Recibo.Importe}' => (new NumberFormatter("es-MEX", NumberFormatter::CURRENCY))->format($recibo->Importe)
             ];
 
             $boldAndUnderlinedDic = [
                 '${Recibo.Receptor.Nombre}' => $recibo->ReceptorNombre,
-                '${Recibo.Total}' => ( new NumberFormatter("es-MEX", NumberFormatter::CURRENCY) )->format($recibo->Total),
+                '${Recibo.Total}' => (new NumberFormatter("es-MEX", NumberFormatter::CURRENCY))->format($recibo->Total),
                 '${Recibo.PrecioTexto}' => $recibo->PrecioTexto
             ];
 
