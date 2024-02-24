@@ -104,11 +104,14 @@
 							<td scope="row">
 								<div class="row m-1">
 
+									<?php if(!$item->Finalizado) : ?>
 									<div class="desk-content col-md-2  p-0 ">
 										<?= Html::linkAction("editar/$item->Id", '<i class="fa fa-edit"></i>', '
 										data-toggle="tooltip" data-placement="top" title="Editar"
 										class="btn btn-primary btn-block" ') ?>
 									</div>
+									<?php endif ?>
+
 
 									<?php if(!$item->Finalizado) : ?>
 									<div class="phone-content col-md-2  p-0 ">
@@ -195,15 +198,15 @@
 									<?php endif ?>
 
 
+									<?php if(!$item->Finalizado) : ?>
 
 									<div class=" p-0  col-md-2 phone-content">
-
 										<?= Html::linkAction(
 										    "borrar/$item->Id",
 										    "<p class='text-danger m-0'>Eliminar</p>"
 										) ?>
-
 									</div>
+									<?php endif ?>
 
 
 								</div>
