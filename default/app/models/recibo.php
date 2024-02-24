@@ -85,7 +85,7 @@ class Recibo extends ActiveRecord
                 //throw new Exception($th);
             }
 
-            Pdf::convert($fileBaseName.'save.docx', $fileBaseName.'save.pdf');
+            // Pdf::convert($fileBaseName.'save.docx', $fileBaseName.'save.pdf');
             $recibo->commit();
 
             return [
