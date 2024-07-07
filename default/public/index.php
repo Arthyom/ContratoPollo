@@ -89,11 +89,11 @@ switch ($environment) {
         break;
 
     case 'PRODUCTION':
-        define('PUBLIC_PATH', 'https://www.documentos.alfredowflsyo.com.co/');
+        define('PUBLIC_PATH', 'https://www.documentos.alfredowflsyopollo.us/');
         break;
 
     case 'QA':
-        define('PUBLIC_PATH', 'https://www.qa.documentos.alfredowflsyo.com.co/');
+        define('PUBLIC_PATH', 'https://www.qa.documentos.alfredowflsyopollo.us/');
         break;
 }
 
