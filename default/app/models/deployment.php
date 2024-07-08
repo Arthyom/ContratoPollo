@@ -67,10 +67,13 @@ class Deployment
             while($connection->next_result());
             ///restor db data
             $sqlToStore = $this->getSQLFileContent($sqlToStorePath);
-            mysqli_multi_query($connection, $sqlToStore);
-            mysqli_close($connection);
 
-            return true;
+            if(strlen($sqlToStore) >0 ){
+                mysqli_multi_query($connection, $sqlToStore);
+                mysqli_close($connection);
+    
+                return true;
+            }
         }
         return true;
     }
@@ -85,6 +88,8 @@ class Deployment
     {
         $file = fopen($dbFilePath, "r");
         $fileSize = filesize($dbFilePath);
-        return fread($file, $fileSize);
+        if($fileSize >0)
+            return fread($file, $fileSize);
+        return null;
     }
 }
