@@ -156,7 +156,12 @@ CREATE TABLE IF NOT EXISTS `recibos` (
 COMMIT;
 
 
-  INSERT INTO `arrendadores` (`Id`, `Nombre`, `Direccion`, `Colonia`, `Usuario`, `Pass`, `Municipio`) VALUES (NULL, 'ARTEMIO GONZALEZ LEMUS', 'BENITO JUAREZ #27', 'CENTRO', '1', '1234', 'MOROLEON');
+INSERT INTO `contratos`.`arrendadores` 
+    (`Id`, `Nombre`, `Direccion`, `Colonia`, `Usuario`, `Pass`, `Municipio`)
+    
+SELECT 
+    NULL, 'ARTEMIO GONZALEZ LEMUS', 'BENITO JUAREZ #27', 'CENTRO', '1', '1234', 'MOROLEON'
+where (SELECT COUNT(*) FROM `contratos`.`arrendadores` ) = 0;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
