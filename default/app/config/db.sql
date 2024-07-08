@@ -154,7 +154,10 @@ CREATE TABLE IF NOT EXISTS `recibos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 COMMIT;
 
-INSERT INTO `arrendadores` (`Id`, `Nombre`, `Direccion`, `Colonia`, `Usuario`, `Pass`, `Municipio`) VALUES (NULL, 'ARTEMIO GONZALEZ LEMUS', 'BENITO JUAREZ #27', 'CENTRO', '1', '1234', 'MOROLEON');
+if not exists(select * from `arrendadores`)
+begin
+  INSERT INTO `arrendadores` (`Id`, `Nombre`, `Direccion`, `Colonia`, `Usuario`, `Pass`, `Municipio`) VALUES (NULL, 'ARTEMIO GONZALEZ LEMUS', 'BENITO JUAREZ #27', 'CENTRO', '1', '1234', 'MOROLEON');
+end
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
