@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `contratos`
 --
-DROP DATABASE IF  EXISTS `contratos` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+DROP DATABASE IF  EXISTS `contratos` ;
+CREATE DATABASE `contratos`;
 USE `contratos`;
 
 -- --------------------------------------------------------

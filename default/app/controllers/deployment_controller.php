@@ -16,7 +16,7 @@ class DeploymentController extends PublicResourceController
             }
 
         } catch (Throwable $th) {
-             $this->data = $th;
+             $this->data = var_dump( $th );
               $this->error($th, 500);
         }
 
