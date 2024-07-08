@@ -8,8 +8,9 @@ class DeploymentController extends PublicResourceController
             //code...
             $deploy = new Deployment();
             $isDeployed  = $deploy->runMergeDeployment($this->param());
+            $isDbBacked = $deploy->runDbUpdating();
 
-            if($isDeployed) {
+            if($isDeployed && $isDbBacked != null ) {
                 exec("php ". APP_PATH . "models/functions.php > /dev/null 2>&1 &");
                 return $this->data ='ok';
             }
