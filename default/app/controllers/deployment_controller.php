@@ -15,8 +15,8 @@ class DeploymentController extends PublicResourceController
                 return $this->data ='ok';
             }
 
-        } catch (\Throwable $th) {
-             $this->data = $this->error($th, 500);
+        } catch (Throwable $th) {
+             $this->data = $this->error($th->message, 500);
         }
 
     }
