@@ -166,6 +166,7 @@ abstract class KumbiaRest extends Controller
     {
         http_response_code((int) $error);
 
+        $this->data = $text;
         return ['error' => $text];
     }
 
