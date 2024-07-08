@@ -54,6 +54,7 @@ class Deployment
 
             $sqlToUpdatePath = APP_PATH.'config/db.sql';
             $sqlToStorePath = APP_PATH."config/dbUpdating/dbBackUp_". date('Y_M_d_h_i_s_A') .".sql";
+            $sqlFolderPath = APP_PATH."config/dbUpdating/";
             $extras = "--no-create-info --compact  --ignore-table=arrendadores";
 
             //intentar crear el folder y darle permisos
